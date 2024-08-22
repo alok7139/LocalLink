@@ -10,7 +10,7 @@ import { FaPhone } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className='w-full '>
+    <footer className='w-full'>
       <div> <img src='/logo2.png' alt='logo'/></div>
       <div>
         <h4>Support</h4>
