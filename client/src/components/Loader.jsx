@@ -1,20 +1,28 @@
 import React from 'react'
-import { Audio } from 'react-loader-spinner'
+import { Audio , FidgetSpinner  , BallTriangle } from 'react-loader-spinner'
+
 
 function LOader() {
   return (
     
     <>
-    <div className='flex justify-center items-center h-full w-full'>
-    <Audio height="50"
-  width="80"
-  radius="9"
-  color="blue"
-  ariaLabel="loading"
-  wrapperStyle
-  wrapperClass 
+    <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: '100vh' 
+  }}>
+  <BallTriangle
+    height={100}
+    width={100}
+    radius={5}
+    color="#4fa94d"
+    ariaLabel="ball-triangle-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    visible={true}
   />
-    </div>
+</div>
     </>
   )
 }
