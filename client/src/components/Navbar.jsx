@@ -17,7 +17,7 @@ function Navbar() {
 
   return (
     <>
-    <nav className="bg-neutral-200 w-full py-6 flex justify-between items-center ">
+    <nav className="bg-neutral-200 w-full fixed z-50 top-0 py-6 flex justify-between items-center ">
       <div className="ml-7">
         <Link to={'/'}>
           <img src="/logo2.png" alt="logo" className="sm:w-32 h-auto w-28" />
