@@ -58,9 +58,9 @@ function Footer() {
             <div class="lg:mx-auto text-left ">
                 <h4 class="text-lg text-gray-900 font-medium mb-7">Services</h4>
                 <ul class="text-sm  transition-all duration-500">
-                    <li class="mb-6"><Link to={'#'}  class="text-gray-600 hover:text-gray-900">Funding</Link></li>
+                    <li class="mb-6"><Link to={'#'}  class="text-gray-600 hover:text-gray-900">Local Events</Link></li>
                     <li class="mb-6"><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Gardening</Link></li>
-                    <li class="mb-6"><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Security</Link></li>
+                    <li class="mb-6"><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Lost Pets</Link></li>
                     <li class="mb-6"><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Handyman</Link></li>
                     <li class="mb-6"><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Tutoring</Link></li>
                     <li><Link to={'#'}  class=" text-gray-600 hover:text-gray-900">Sales</Link></li>
