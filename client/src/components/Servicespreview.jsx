@@ -48,8 +48,8 @@ function Servicespreview() {
              </div>
          </div>
 
-         <div className='mt-10'> 
-          <button className='rounded-lg bg-purple-800 m-4 text-white p-4 text-center'>
+         <div className='mt-10 flex justify-center items-center'> 
+          <button className='rounded-lg bg-purple-800 m-4 text-xl text-white p-4 text-center w-32'>
             SIgn up
           </button>
          </div>
