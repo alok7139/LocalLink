@@ -27,7 +27,7 @@ function Hero() {
 
     
     <div className="mt-8 ">
-      <button className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600">
+      <button className="bg-black transition duration-300 ease-in-out transform  hover:scale-105 text-white px-6 py-3 rounded-lg shadow-lg text-xl font-serif">
         Join the Community
       </button>
     </div>

@@ -76,7 +76,7 @@ function Navbar() {
               </li>
 
               <li>
-                <button className="bg-blue-500 text-white p-2 rounded-xl w-full">Sign in</button>
+                <button className="bg-black text-xl font-serif text-white p-3 rounded-xl w-full">Sign in</button>
               </li>
             </ul>
           </div>
@@ -128,7 +128,7 @@ function Navbar() {
           </li>
 
           <li>
-            <button className="bg-blue-500 text-white p-2 rounded-xl">Sign in</button>
+            <button className="bg-black text-xl font-serif text-white p-3 rounded-xl">Sign in</button>
           </li>
         </ul>
       </div>
