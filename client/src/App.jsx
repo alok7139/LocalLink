@@ -10,6 +10,7 @@ export const Navbar = lazy(() => import('./components/Navbar'));
 export const Footer = lazy(() => import('./components/Footer'));
 // export const Loader = lazy(() => import('./components/Loader'));
 import LOader from './components/Loader';
+import Localevents from './components/Localevents';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
          <Route path="/"  element = {<Home/>}/>
          <Route path='/contact' element={<Contact/>}/>
          <Route path='/about' element={<About/>}/>
+         <Route path='/localevents' element={<Localevents/>}/>
        </Routes>
        <Footer/>
        <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}/>

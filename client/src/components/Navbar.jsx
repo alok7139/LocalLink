@@ -47,7 +47,7 @@ function Navbar() {
                 {serviceOpen && (
                   <ul className="mt-2 w-full bg-white text-black rounded-md shadow-lg">
                     <li className="hover:bg-gray-100 px-4 py-2">
-                      <Link to={'/service1'}>Local Events</Link>
+                      <Link to={'/localevents'}>Local Events</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
                       <Link to={'/service2'}>Gardening</Link>
@@ -99,7 +99,7 @@ function Navbar() {
             {serviceOpen && (
               <ul className="absolute top-full left-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg z-50">
                 <li className="hover:bg-gray-100 px-4 py-2">
-                  <Link to={'/service1'}>Local Events</Link>
+                  <Link to={'/localevents'}>Local Events</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
                   <Link to={'/service2'}>Gardening</Link>
