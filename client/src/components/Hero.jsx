@@ -10,7 +10,7 @@ function Hero() {
   return (
     <div className='flex flex-col lg:flex-row justify-between items-center mt-28 lg:mt-44 px-4 lg:px-10 pt-16 lg:pt-0'>
   <div className='flex flex-col lg:w-1/2'>
-    <h1 className='font-bold text-3xl lg:text-4xl text-yellow-700'>
+    <h1 className='font-bold text-3xl lg:text-4xl text-orange-800'>
       "Connecting Neighbors, <span className='ml-4 md:ml-0'>Building Community"</span>
     </h1>
     
