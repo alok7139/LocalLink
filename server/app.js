@@ -3,11 +3,12 @@ import cors from 'cors'
 import { configDotenv } from 'dotenv'
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
+import { dbconnection } from './database/database.js';
 
 
 const app = express();
 
-configDotenv({path:'./env'})
+configDotenv({path:'./.env'})
 
 app.use(cors({
     origin:[process.env.FRONTEND_URL],
@@ -21,5 +22,8 @@ app.use(fileUpload({
     useTempFiles:true,
     tempFileDir: "/tmp/",
 }))
+
+
+dbconnection();
 
 export default app;

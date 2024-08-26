@@ -1,4 +1,4 @@
-import app from './app'
+import app from './app.js'
 import cloudinary from 'cloudinary'
 
 cloudinary.v2.config({
@@ -9,6 +9,6 @@ cloudinary.v2.config({
 
 
 
-app.listen(process.env.PORT , () => {
-    console.log(`${process.env.PORT} is running`)
+app.listen((process.env.PORT) , () => {
+    console.log(`server is running on ${process.env.PORT}`)
 })
