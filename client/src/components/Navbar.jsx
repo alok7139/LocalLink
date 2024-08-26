@@ -50,19 +50,19 @@ function Navbar() {
                       <Link to={'/localevents'}>Local Events</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
-                      <Link to={'/service2'}>Gardening</Link>
+                      <Link to={'/gardening'}>Gardening</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
-                      <Link to={'/service3'}>Lost Pets</Link>
+                      <Link to={'/lostpets'}>Lost Pets</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
-                      <Link to={'/service4'}>Tutoring</Link>
+                      <Link to={'/tutoring'}>Tutoring</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
-                      <Link to={'/service5'}>Handyman</Link>
+                      <Link to={'/handyman'}>Handyman</Link>
                     </li>
                     <li className="hover:bg-gray-200 px-4 py-2">
-                      <Link to={'/service6'}>Sales</Link>
+                      <Link to={'/sales'}>Sales</Link>
                     </li>
                   </ul>
                 )}
@@ -102,19 +102,19 @@ function Navbar() {
                   <Link to={'/localevents'}>Local Events</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
-                  <Link to={'/service2'}>Gardening</Link>
+                  <Link to={'/gardening'}>Gardening</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
-                  <Link to={'/service3'}>Lost Pets</Link>
+                  <Link to={'/lostpets'}>Lost Pets</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
-                  <Link to={'/service4'}>Tutoring</Link>
+                  <Link to={'/tutoring'}>Tutoring</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
-                  <Link to={'/service5'}>Handyman</Link>
+                  <Link to={'/handyman'}>Handyman</Link>
                 </li>
                 <li className="hover:bg-gray-200 px-4 py-2">
-                  <Link to={'/service6'}>Sales</Link>
+                  <Link to={'/sales'}>Sales</Link>
                 </li>
               </ul>
             )}
