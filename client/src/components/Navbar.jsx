@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { Context } from '../main';
+import { useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Navbar() {
+  const {isauthenticated,setisauthenticated} = useContext(Context)
   const [toggle, setToggle] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
 
@@ -14,6 +19,16 @@ function Navbar() {
   const toggleResponsive = () => {
     setToggle(!toggle);
   };
+
+  const handlelogout = async() => {
+    await axios.get("http://localhost:3000/api/v1/user/logout" , {withCredentials:true})
+    .then((res) => {
+      setisauthenticated(false)
+      toast.success(res.data.message);
+    }).catch((error) => {
+      toast.error(error.response.data.message);
+    })
+  }
 
   return (
     <>
@@ -76,7 +91,11 @@ function Navbar() {
               </li>
 
               <li>
-                <button className="bg-black text-xl font-serif text-white p-3 rounded-xl w-full">Sign in</button>
+                {
+                  !isauthenticated ? 
+                  <Link to={'/login'}><button className="bg-black text-xl font-serif text-white p-3 rounded-xl w-full">Sign in</button></Link>
+                  : <button className="bg-black text-xl font-serif text-white p-3 rounded-xl w-full" onClick={handlelogout}>Logout</button>
+                }
               </li>
             </ul>
           </div>
@@ -128,7 +147,12 @@ function Navbar() {
           </li>
 
           <li>
-            <button className="bg-black text-xl font-serif text-white p-3 rounded-xl">Sign in</button>
+            {
+              !isauthenticated ? 
+              <Link to={'/login'}><button className="bg-black text-xl font-serif text-white p-3 rounded-xl">Sign in</button></Link>
+              :
+              <button className="bg-black text-xl font-serif text-white p-3 rounded-xl" onClick={handlelogout}>Logout</button>
+            }
           </li>
         </ul>
       </div>

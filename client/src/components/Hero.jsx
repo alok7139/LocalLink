@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import GoogleMapReact from 'google-map-react';
+import { useContext } from 'react';
+import { Context } from '../main';
+import { Link } from 'react-router-dom';
 
 
 function Hero() {
 
-  
+  const {isauthenticated,setisauthenticated , user} = useContext(Context)
   
 
   return (
@@ -27,9 +30,18 @@ function Hero() {
 
     
     <div className="mt-8 ">
-      <button className="bg-black transition duration-300 ease-in-out transform  hover:scale-105 text-white px-6 py-3 rounded-lg shadow-lg text-xl font-serif">
+      {
+        !isauthenticated ? 
+        <Link to={'/register'}>
+         <button className="bg-black transition duration-300 ease-in-out transform  hover:scale-105 text-white px-6 py-3 rounded-lg shadow-lg text-xl font-serif">
         Join the Community
       </button>
+        </Link>
+      :
+      <button className="bg-black transition duration-300 ease-in-out transform  hover:scale-105 text-white px-6 py-3 rounded-lg shadow-lg text-xl font-serif">
+        Hello , {user.name}
+      </button>
+      }
     </div>
   </div>
   

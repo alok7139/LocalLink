@@ -5,7 +5,7 @@ import { isauthorized } from "../middlewares/auth.js";
 const router = express.Router();
 
 router.post("/user/register" , register);
-router.get("/user/login" , login);
+router.post("/user/login" , login);
 router.get('/user/logout' ,isauthorized, logout);
 router.get('/user/getuser' , isauthorized, getuser)
 

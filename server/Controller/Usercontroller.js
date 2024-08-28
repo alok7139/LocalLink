@@ -7,7 +7,7 @@ export const register = catchasyncerror(async(req,res,next) => {
     const {name,lastname,email,phone,password,dob , gender} = req.body;
 
     if(!name || !lastname || !email || !phone || !password  || !dob || !gender){
-        return next(new ErrorHandler("Fill all the details", 400));
+        return next(new ErrorHandler("Please provide all details", 400));
     }
 
     const isemail = await User.findOne({email});
@@ -32,17 +32,17 @@ export const login = catchasyncerror(async(req,res,next) => {
         return next (new ErrorHandler("Please provide all details",400));
     }
 
-    const verifyemail = await User.findOne({email}).select("+password");
-    if(!verifyemail){
+    const user = await User.findOne({email}).select("+password");
+    if(!user){
         return next(new ErrorHandler("User not registered with us",400));
     }
     
-    const comparepassword = await verifyemail.comparepassword(password);
+    const comparepassword = await user.comparepassword(password);
     if(!comparepassword){
         return next(new ErrorHandler("Credentials is not valid",400));
     }
 
-    sendtoken(verifyemail,"Welcome to the community" , res,201)
+    sendtoken(user,"Welcome to the community" , res,201)
 })
 
 export const logout = catchasyncerror(async(req,res,next) => {
