@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 import bcrypt from 'bcrypt'
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
+import validator from "validator";
 
-const user = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -15,6 +16,7 @@ const user = new mongoose.Schema({
     email:{
         type:String,
         required:true,
+        validate : [validator.isEmail , "please provide valid email" ]
     },
     phone:{
         type:String,
@@ -31,6 +33,24 @@ const user = new mongoose.Schema({
 })
 
 
-User.methods.presave()
+userSchema.pre("save" ,async function(next) {
+    if(!this.isModified("password")){
+        next();
+    }
+    this.password =  await bcrypt.hash(this.password,10);
+})
 
-export const User = mongoose.model("User" , user);
+userSchema.methods.comparepassword = async function(userpassword) {
+    return await bcrypt.compare(userpassword , this.password);
+}
+
+userSchema.methods.generatejsonwebtoken = function() {
+    return jwt.sign({id:this._id} , process.env.JWT_SECRET_KEY , {
+        expiresIn:process.env.JWT_EXPIRE
+    })
+}
+
+
+
+
+export const User = mongoose.model("User" , userSchema);
