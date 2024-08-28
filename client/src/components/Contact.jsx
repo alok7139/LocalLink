@@ -27,7 +27,7 @@ function Contact() {
 
   return (
     <>
-    <section className="px-4 sm:px-10 py-6 sm:py-10 mt-40 font-serif ">
+    <section className="px-4 sm:px-10 py-6 sm:py-10 mt-40 font-serif mb-10">
   <div className="flex flex-col justify-center items-center">
     <form className="w-full max-w-2xl" onSubmit={handlemessage}>
       <h2 className="text-center mb-6 sm:mb-9 mt-5 text-2xl sm:text-4xl font-bold overflow-hidden">CONTACT US</h2>
@@ -35,19 +35,19 @@ function Contact() {
         <input
           type="text"
           value={name}
-          placeholder="Your Name"
+          placeholder="Name"
           className={`text-black w-full p-3 border border-gray-300 bg-white rounded-lg`}
           onChange={(e) => setname(e.target.value)} 
         />
         <input
           type="email"
           value={email}
-          placeholder="Your Email"
+          placeholder="Email"
           className={`text-black w-full p-2 border border-gray-300 bg-white rounded-lg`}
           onChange={(e) => setemail(e.target.value)}
         />
         <input
-          type="number"
+          type="text"
           value={phone}
           placeholder="Phone Number"
           className={`text-black overflow-hidden w-full p-2 border border-gray-300 bg-white rounded-lg`}

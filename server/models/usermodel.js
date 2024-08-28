@@ -17,14 +17,20 @@ const userSchema = new mongoose.Schema({
         required:true,
         validate : [validator.isEmail , "please provide valid email" ]
     },
+    dob:{
+        type:Date,
+        required:true,
+    },
+    gender:{
+        type:String,
+        required:true,
+        enum : ["Male" , "Female" , "Others"],
+    },
     phone:{
         type:String,
         required:true,
     },
-    country:{
-        type:String,
-        required:true,
-    },
+    
     password:{
         type:String,
         required:true,

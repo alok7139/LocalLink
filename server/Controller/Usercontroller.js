@@ -4,9 +4,9 @@ import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import { sendtoken } from "../utility/createtoken.js";
 
 export const register = catchasyncerror(async(req,res,next) => {
-    const {name,lastname,email,phone,password,country} = req.body;
+    const {name,lastname,email,phone,password,dob , gender} = req.body;
 
-    if(!name || !lastname || !email || !phone || !password || !country){
+    if(!name || !lastname || !email || !phone || !password  || !dob || !gender){
         return next(new ErrorHandler("Fill all the details", 400));
     }
 
@@ -16,7 +16,7 @@ export const register = catchasyncerror(async(req,res,next) => {
     }
 
     const user = await User.create({
-        name,email,phone,country,password,lastname
+        name,email,phone,password,lastname,dob,gender
 
     })
 
