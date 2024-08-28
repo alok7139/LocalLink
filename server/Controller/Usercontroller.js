@@ -46,13 +46,21 @@ export const login = catchasyncerror(async(req,res,next) => {
 })
 
 export const logout = catchasyncerror(async(req,res,next) => {
-    res.status(201).cookie("usertoken" , "", {
+    res.status(201).cookie("token" , "", {
+        expires: new Date(Date.now()),
         httpOnly:true,
         sameSite:"None",
         secure:true,
-        expires: new Date(Date.now())
     }).json({
         success:true,
         message:"Thanks for serving you"
+    })
+})
+
+export const getuser = catchasyncerror(async(req,res,next) => {
+    const user = req.user;
+    res.status(201).json({
+        success:true,
+        user
     })
 })

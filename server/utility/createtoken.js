@@ -10,7 +10,7 @@ export const sendtoken = (user,message,res,statuscode) => {
     secure:true
    }
 
-   res.status(statuscode).cookie("usertoken" , token , options).json({
+   res.status(statuscode).cookie("token" , token , options).json({
     success:true,
     user,message,token
    })
