@@ -1,6 +1,7 @@
 import { User } from "../models/usermodel.js";
 import ErrorHandler from "../middlewares/error.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
+import { sendtoken } from "../utility/createtoken.js";
 
 export const register = catchasyncerror(async(req,res,next) => {
     const {name,lastname,email,phone,password,country} = req.body;
@@ -19,10 +20,7 @@ export const register = catchasyncerror(async(req,res,next) => {
 
     })
 
-    res.status(200).json({
-        success:true,
-        message:"Thanks for choosing us"
-    })
+    sendtoken(user,"Thanks for choosing us" , res,201)
 
 
 })
@@ -44,8 +42,17 @@ export const login = catchasyncerror(async(req,res,next) => {
         return next(new ErrorHandler("Credentials is not valid",400));
     }
 
-    res.status(200).json({
+    sendtoken(verifyemail,"Welcome to the community" , res,201)
+})
+
+export const logout = catchasyncerror(async(req,res,next) => {
+    res.status(201).cookie("usertoken" , "", {
+        httpOnly:true,
+        sameSite:"None",
+        secure:true,
+        expires: new Date(Date.now())
+    }).json({
         success:true,
-        message:"Welcome to the community",
+        message:"Thanks for serving you"
     })
 })
