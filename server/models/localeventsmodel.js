@@ -26,8 +26,21 @@ const localevenetsSchema = new mongoose.Schema({
     address:{
         type:String,
         required:true,
-    }
+    },
+    city:{
+        type:String,
+        required:true,
+    },
+    country:{
+        type:String,
+        default: "India"
+    },
+    postedby: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+    },
 
 })
 
-export default Localevents = mongoose.model("Localevents" , localevenetsSchema);
+export const Localevents = mongoose.model("Localevents" , localevenetsSchema);
