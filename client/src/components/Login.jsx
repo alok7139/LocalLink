@@ -32,7 +32,7 @@ function Login() {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center mt-48 mb-10 px-4 '>
+        <div className='flex flex-col items-center justify-center font-serif mt-48 mb-10 px-4 '>
             <div className='w-full max-w-md p-8 rounded-lg shadow-md'>
                 <h2 className='text-2xl font-bold text-center mb-4'>Sign in</h2>
                 <p className='text-center text-gray-600 mb-8'>Please Sign in to continue</p>

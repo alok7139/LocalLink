@@ -6,7 +6,7 @@ export const message = catchasyncerror(async(req,res,next) => {
     const {name , email , phone , message} = req.body;
 
     if(!name || !email || !phone || !message){
-        return next(new ErrorHandler("Fill all the details" , 400));
+        return next(new ErrorHandler("Please provide all details" , 400));
     }
 
     await Message.create({name ,email , phone , message});

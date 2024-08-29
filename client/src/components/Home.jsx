@@ -6,7 +6,7 @@ import Join from './Join'
 
 function Home() {
   return (
-    <div>
+    <div className=''>
        <Hero/>
         <NeighborhoodFeatures/>
         <Join/>
