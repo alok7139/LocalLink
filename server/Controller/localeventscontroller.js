@@ -1,8 +1,34 @@
 import ErrorHandler from "../middlewares/error.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import {Localevents} from "../models/localeventsmodel.js";
+import {v2 as cloudinary} from 'cloudinary'
 
 export const registerevents = catchasyncerror(async(req,res,next) => {
+    
+    if(!req.files || Object.keys(req.files).length === 0){
+        return next(new ErrorHandler("Image is required",400));
+    }
+
+    const {localeventsvg} = req.files;
+
+    const allowedformats =  ['image/png' , 'image/jpeg' , 'image/webp'];
+
+    if(!allowedformats.includes(localeventsvg.mimetype)){
+        return next(new ErrorHandler("Invalid file format, upload a PNG , JPEG , WEBP format",400))
+    }
+    
+    const cloudinaryresponse = await cloudinary.uploader.upload(
+        localeventsvg.tempFilePath,
+        {folder: "localevent_image"},
+    );
+
+    if(!cloudinaryresponse || cloudinaryresponse.error){
+        console.log("cloudinary Error" , cloudinaryresponse.error || "Unknown cloudinary response");
+        return next(new ErrorHandler("Failed to upload resume!" , 500));
+    };
+
+
+
     const {localeventname, startdate, enddate, owner ,address ,phone,city } = req.body;
 
     if(!localeventname || !startdate || !enddate || !owner || !address || !phone  || !city){
@@ -13,7 +39,11 @@ export const registerevents = catchasyncerror(async(req,res,next) => {
 
     const newevents = await Localevents.create({
         localeventname , startdate , enddate , owner , address , phone , city, 
-        postedby
+        postedby , 
+        localeventsvg:{
+            public_id : cloudinaryresponse.public_id,
+            url:cloudinaryresponse.secure_url,
+        }
     })
 
     res.status(201).json({
@@ -40,23 +70,54 @@ export const allevents = catchasyncerror(async(req,res,next) => {
 })
 
 
-export const updatevents = catchasyncerror(async(req,res,next) => {
-    const {id} = req.params;
-    let events=  await Localevents.findById(id);
-    if(!events){
-        return next(new ErrorHandler("😅 Oops, Events is not found",400));
+export const updatevents = catchasyncerror(async (req, res, next) => {
+    const updatedevent = {
+        localeventname: req.body.localeventname,
+        startdate: req.body.startdate,
+        enddate: req.body.enddate,
+        owner: req.body.owner,
+        address: req.body.address,
+        phone: req.body.phone,
+        city: req.body.city,
+    };
+
+    // Check if a new image file is uploaded
+    if (req.files && req.files.localeventsvg) {
+        const eventbanner = req.files.localeventsvg;
+        const event = await Localevents.findById(req.params.id);
+
+        // Destroy the previous image from Cloudinary
+        const eventsbannerid = event.localeventsvg.public_id;
+        await cloudinary.uploader.destroy(eventsbannerid);
+
+        // Upload the new image to Cloudinary
+        const cloudinaryresponse = await cloudinary.uploader.upload(
+            eventbanner.tempFilePath,
+            { folder: "localevent_image" }
+        );
+
+        // Update the localeventsvg field with the new image details
+        updatedevent.localeventsvg = {
+            public_id: cloudinaryresponse.public_id,
+            url: cloudinaryresponse.secure_url,
+        };
     }
-    events = await Localevents.findByIdAndUpdate(id , req.body , {
-        new:true,
-        runValidators:true,
-        useFindAndModify:false,
-    })
+
+    // Update the event in the database
+    const events = await Localevents.findByIdAndUpdate(req.params.id, updatedevent, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    // Send response
     res.status(200).json({
-        success:true,
+        success: true,
         events,
-        message: "Updated successfully"
-    })
-})
+        message: "Updated successfully",
+    });
+});
+
 
 export const deleteevents = catchasyncerror(async(req,res,next) => {
     const {id} = req.params;
@@ -64,6 +125,8 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
     if(!events){
         return next(new ErrorHandler("😅 Oops, Events is not found",400));
     }
+    const localeventimageid = events.localeventsvg.public_id;
+    await cloudinary.uploader.destroy(localeventimageid);
     await events.deleteOne();
     res.status(200).json({
         success:true,

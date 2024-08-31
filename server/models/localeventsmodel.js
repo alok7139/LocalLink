@@ -44,7 +44,7 @@ const localevenetsSchema = new mongoose.Schema({
     localeventsvg:{
         public_id:{
             type:String,
-            require:true
+            required:true
         },
         url:{
             type:String,
