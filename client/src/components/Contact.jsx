@@ -8,6 +8,24 @@ function Contact() {
   const [email, setemail] = useState("")
   const [phone, setphone] = useState("")
   const [message, setmessage] = useState("")
+  const [errors, seterrors] = useState({name:'' , email:'' , phone:'' , message:''})
+
+  const validateform = () => {
+    const newerrors = {};
+    if(!name){
+      newerrors.name = 'Name is required';
+    }
+    if(!email){
+      newerrors.email = 'Email is required';
+    }
+    if(!phone){
+      newerrors.phone = 'Phone Number is required';
+    }
+    if(!message){
+      newerrors.message = 'Message is required';
+    }
+    return newerrors
+  }
 
   const handlemessage = async(e) => {
     e.preventDefault();

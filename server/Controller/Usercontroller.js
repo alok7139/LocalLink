@@ -53,7 +53,7 @@ export const logout = catchasyncerror(async(req,res,next) => {
         secure:true,
     }).json({
         success:true,
-        message:"Thanks for precious time"
+        message:"Thanks for your precious time"
     })
 })
 
