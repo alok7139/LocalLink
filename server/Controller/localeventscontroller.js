@@ -31,6 +31,15 @@ export const getalluserevents = catchasyncerror(async(req,res,next) => {
     })
 })
 
+export const allevents = catchasyncerror(async(req,res,next) => {
+    const events = await Localevents.find({})
+    res.status(200).json({
+        success:true,
+        events
+    })
+})
+
+
 export const updatevents = catchasyncerror(async(req,res,next) => {
     const {id} = req.params;
     let events=  await Localevents.findById(id);
@@ -60,6 +69,9 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
         success:true,
     })
 })
+
+
+
 
 
 

@@ -29,6 +29,13 @@ function Contact() {
 
   const handlemessage = async(e) => {
     e.preventDefault();
+    const validationform = validateform();
+
+    if(Object.keys(validationform).length > 0){
+      seterrors(validationform);
+      return;
+    }
+
     await axios.post("http://localhost:3000/api/v1/send/message" , {name , email,phone,message} , {withCredentials:true,headers:{"Content-Type" : "application/json"}})
     .then((res) => {
       setname("")
@@ -49,42 +56,55 @@ function Contact() {
   <div className="flex flex-col justify-center items-center">
     <form className="w-full max-w-2xl" onSubmit={handlemessage}>
       <h2 className="text-center mb-6 sm:mb-9 mt-5 text-2xl sm:text-4xl font-bold overflow-hidden">CONTACT US</h2>
-      <div className={`flex flex-col sm:flex-row gap-4 sm:gap-5 mb-6 sm:mb-7`} >
-        <input
-          type="text"
-          value={name}
-          placeholder="Name"
-          className={`text-black w-full p-3 border border-gray-300 bg-white rounded-lg`}
-          onChange={(e) => setname(e.target.value)} 
-        />
-        <input
-          type="email"
-          value={email}
-          placeholder="Email"
-          className={`text-black w-full p-2 border border-gray-300 bg-white rounded-lg`}
-          onChange={(e) => setemail(e.target.value)}
-        />
-        <input
-          type="text"
-          value={phone}
-          placeholder="Phone Number"
-          className={`text-black overflow-hidden w-full p-2 border border-gray-300 bg-white rounded-lg`}
-          onChange={(e) => setphone(e.target.value)}
-        />
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-6 sm:mb-7">
+        <div className="flex flex-col w-full">
+          <input
+            type="text"
+            value={name}
+            placeholder="Name"
+            className={`text-black ${errors.name ? 'border-red-500' : 'border-gray-300'} w-full p-3 border bg-white rounded-lg`}
+            onChange={(e) => setname(e.target.value)} 
+          />
+          {errors.name && <p className='text-red-500 text-sm mt-1'>{errors.name}</p>}
+        </div>
+        <div className="flex flex-col w-full">
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            className={`text-black ${errors.email ? 'border-red-500' : 'border-gray-300'} w-full p-2 border bg-white rounded-lg`}
+            onChange={(e) => setemail(e.target.value)}
+          />
+          {errors.email && <p className='text-red-500 text-sm mt-1'>{errors.email}</p>}
+        </div>
+        <div className="flex flex-col w-full">
+          <input
+            type="text"
+            value={phone}
+            placeholder="Phone Number"
+            className={`text-black ${errors.phone ? 'border-red-500' : 'border-gray-300'} w-full p-2 border bg-white rounded-lg`}
+            onChange={(e) => setphone(e.target.value)}
+          />
+          {errors.phone && <p className='text-red-500 text-sm mt-1'>{errors.phone}</p>}
+        </div>
       </div>
-      <textarea
-        rows="4"
-        value={message}
-        placeholder="Message"
-        className="text-black w-full p-2 mb-6 border border-gray-300 rounded-lg"
-        onChange={(e) => setmessage(e.target.value)}
-      />
-      <button className="w-full bg-black text-white py-2 rounded-lg font-serif text-xl  focus:outline-none focus:ring-2 focus:ring-black shadow-2xl" type="submit">
+      <div className="flex flex-col w-full mb-6">
+        <textarea
+          rows="4"
+          value={message}
+          placeholder="Message"
+          className={`text-black ${errors.message ? 'border-red-500' : 'border-gray-300'} w-full p-2 border rounded-lg`}
+          onChange={(e) => setmessage(e.target.value)}
+        />
+        {errors.message && <p className='text-red-500 text-sm mt-1'>{errors.message}</p>}
+      </div>
+      <button className="w-full bg-black text-white py-2 rounded-lg font-serif text-xl focus:outline-none focus:ring-2 focus:ring-black shadow-2xl" type="submit">
         Send Message
       </button>
     </form>
   </div>
 </section>
+
 </>
 
   )

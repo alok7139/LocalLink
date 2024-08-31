@@ -41,6 +41,17 @@ const localevenetsSchema = new mongoose.Schema({
         required: true,
     },
 
+    localeventsvg:{
+        public_id:{
+            type:String,
+            require:true
+        },
+        url:{
+            type:String,
+            required:true
+        }
+    }
+
 })
 
 export const Localevents = mongoose.model("Localevents" , localevenetsSchema);

@@ -13,7 +13,7 @@ export const message = catchasyncerror(async(req,res,next) => {
 
     return res.status(201).json({
         success:true,
-        message:"Thanks for your query"
+        message:"Thank you for contacting us"
     })
 })
 
