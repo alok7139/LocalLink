@@ -11,6 +11,8 @@ export const Footer = lazy(() => import('./components/Footer'));
 import LOader from './components/Loader';
 import { Context } from './main';
 import axios from 'axios';
+export const Createevents = lazy(() => import('./serviceprovide/Createevents'))
+export const Yourevents  = lazy(() => import('./serviceprovide/Yourevents'))
 export const Login = lazy(() => import('./components/Login'))
 export const Localevents = lazy(() => import("./Services/Localevents"))
 export const Lostpets = lazy(() => import("./Services/Lostpets"))
@@ -53,6 +55,8 @@ function App() {
          <Route path='/gardening' element={<Gardening/>} />
          <Route path='/register'  element={<Register/>}/>
          <Route path='/login' element={<Login/>}/>
+         <Route path='/create/event' element={<Createevents/>} />
+         <Route path='/your/event' element={<Yourevents/>} />
        </Routes>
        <Footer/>
        <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}/>

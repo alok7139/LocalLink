@@ -31,11 +31,10 @@ function Localevents() {
   return (
     <div className='mt-48 mb-20 font-serif'>
       <div className='flex justify-center flex-col items-center mb-10 gap-5'>
-        <h1 className='text-3xl font-bold font-serif text-center'>Local Events</h1>
+        <h1 className='text-4xl font-bold font-serif text-center'>Local Events</h1>
         <div className='flex flex-row justify-center items-center gap-4'>
-          <p>Create Events</p>
-          <p>Your Events</p>
-          <p></p>
+          <div className='bg-gray-100'><Link to={'/create/event'}><button className='p-2 bg-white rounded-lg text-blue-500 cursor-pointer'>Create Events</button></Link></div>
+          <Link to={'/your/event'}> <button className='p-2 text-blue-500 cursor-pointer'>Get Your Events</button></Link>
         </div>
       </div>
 
