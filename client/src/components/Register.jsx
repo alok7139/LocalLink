@@ -17,6 +17,7 @@ function Register() {
     const [password, setpassword] = useState('');
     const [dob, setdob] = useState('');
     const [gender, setgender] = useState('');
+    
 
     const handleregister = async(e) => {
         e.preventDefault();

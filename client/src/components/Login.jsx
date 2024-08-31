@@ -10,25 +10,41 @@ function Login() {
 
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
+    const [errors, setErrors] = useState({ email: '', password: '' }); // State to store validation errors
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!email) {
+            newErrors.email = 'Email is required';
+        }
+        if (!password) {
+            newErrors.password = 'Password is required';
+        }
+        return newErrors;
+    };
 
     const handlelogin = async (e) => {
         e.preventDefault();
-            await axios.post("http://localhost:3000/api/v1/user/login" , {email,password} , {withCredentials:true , headers:{"Content-Type": "application/json"}})
+
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        await axios.post("http://localhost:3000/api/v1/user/login", { email, password }, { withCredentials: true, headers: { "Content-Type": "application/json" } })
             .then((res) => {
                 toast.success(res.data.message);
-                setisauthenticated(true)
-                setemail('')
-                setpassword('')
+                setisauthenticated(true);
+                setemail('');
+                setpassword('');
             }).catch((error) => {
-                toast.error(error.response.data.message)
-            })
-            
-        
-        
+                toast.error(error.response.data.message);
+            });
     };
 
-    if(isauthenticated){
-        return <Navigate to={'/'} />
+    if (isauthenticated) {
+        return <Navigate to={'/'} />;
     }
 
     return (
@@ -43,8 +59,9 @@ function Login() {
                             placeholder='Email'
                             value={email}
                             onChange={(e) => setemail(e.target.value)}
-                            className='w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
+                            className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
                         />
+                        {errors.email && <p className='text-red-500 text-sm mt-1'>{errors.email}</p>}
                     </div>
                     <div>
                         <input
@@ -52,8 +69,9 @@ function Login() {
                             placeholder='Password'
                             value={password}
                             onChange={(e) => setpassword(e.target.value)}
-                            className='w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
+                            className={`w-full p-3 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
                         />
+                        {errors.password && <p className='text-red-500 text-sm mt-1'>{errors.password}</p>}
                     </div>
                     <div className='text-right'>
                         <Link to='/register' className='text-blue-500 hover:underline'>

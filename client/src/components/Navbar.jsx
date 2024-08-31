@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { GoChevronDown } from "react-icons/go";
+import { GoChevronUp } from "react-icons/go";
 import { Context } from '../main';
 import { useContext } from 'react';
 import axios from 'axios';
@@ -19,6 +20,16 @@ function Navbar() {
   const toggleResponsive = () => {
     setToggle(!toggle);
   };
+  const handlemouse = () => {
+    setServiceOpen(true);
+  }
+
+  const handleleave = (e) => {
+    if(!e.currentTarget.contains(e.relatedTarget)){
+      setServiceOpen(false);
+    }
+  }
+  
 
   const handlelogout = async() => {
     await axios.get("http://localhost:3000/api/v1/user/logout" , {withCredentials:true})
@@ -57,7 +68,7 @@ function Navbar() {
               <li className="hover:text-stone-500 relative" onClick={toggleServiceDropdown}>
                 <div className="flex items-center">
                   <Link to={'#'}>Services</Link>
-                  <IoMdArrowDropdown className="ml-1" />
+                  {serviceOpen ? <GoChevronUp  /> : <GoChevronDown/>}
                 </div>
                 {serviceOpen && (
                   <ul className="mt-2 w-full bg-white text-black rounded-md shadow-lg">
@@ -109,14 +120,15 @@ function Navbar() {
             <Link to={'/'}>Home</Link>
           </li>
 
-          <li className="hover:text-blue-500 relative" onClick={toggleServiceDropdown}>
+          <div onMouseEnter={handlemouse} onMouseLeave={handleleave}>
+          <li  className="hover:text-blue-500 relative" onClick={toggleServiceDropdown}>
             <Link className="flex items-center" to={'#'}>
-              Services <IoMdArrowDropdown className="ml-1" />
+              Services {serviceOpen ? <GoChevronUp/> : <GoChevronDown/>}
             </Link>
 
             {/* Dropdown menu */}
             {serviceOpen && (
-              <ul className="absolute top-full left-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg z-50">
+              <ul className="absolute top-full left-0 w-40 bg-white text-black rounded-md shadow-lg z-50">
                 <li className="hover:bg-gray-100 px-4 py-2">
                   <Link to={'/localevents'}>Local Events</Link>
                 </li>
@@ -138,6 +150,8 @@ function Navbar() {
               </ul>
             )}
           </li>
+          </div>
+          
 
           <li className="hover:text-blue-500">
             <Link to={'/about'}>About</Link>
