@@ -4,6 +4,7 @@ import {Localevents} from "../models/localeventsmodel.js";
 import {v2 as cloudinary} from 'cloudinary'
 import { Booking } from "../models/Bookevent.js";
 
+
 export const registerevents = catchasyncerror(async(req,res,next) => {
     
     if(!req.files || Object.keys(req.files).length === 0){
@@ -131,6 +132,7 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
     await events.deleteOne();
     res.status(200).json({
         success:true,
+        message:"Deleted Successfully",
     })
 })
 
