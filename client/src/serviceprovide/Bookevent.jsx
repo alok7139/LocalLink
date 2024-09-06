@@ -12,7 +12,7 @@ function Bookevent() {
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
     const [phone, setphone] = useState('')
-    const [alreadybooked, setalreadybooked] = useState(false)
+    const [isbooked, setisbooked] = useState(false)
     const [errors, seterrors] = useState({name: '' , email: '' , phone:''})
 
    const validateform = () => {
@@ -39,12 +39,13 @@ function Bookevent() {
         return;
     }
 
-    await axios.post(`http://localhost:3000/api/v1/book/event/${id}` , {name,email,phone} , {withCredentials:true , headers:{"Content-Type" : "application/json"}})
+    await axios.post(`http://localhost:3000/api/v1/book/event/${id}` , {name,email,phone , isbooked:true} , {withCredentials:true , headers:{"Content-Type" : "application/json"}})
     .then((res) => {
         toast.success(res.data.message)
         setname('')
         setemail('')
         setphone('')
+        setisbooked(false);
     }).catch((error) => {
         toast.error(error.response.data.message);
     })
@@ -94,9 +95,12 @@ function Bookevent() {
           </div>
         </div>
         
-        <button className="w-full bg-black text-white py-2 rounded-lg font-serif text-xl focus:outline-none focus:ring-2 focus:ring-black shadow-2xl" type="submit">
+       
+            <button className="w-full bg-black text-white py-2 rounded-lg font-serif text-xl focus:outline-none focus:ring-2 focus:ring-black shadow-2xl" type="submit">
           Book Event
         </button>
+        
+        
       </form>
     </div>
   </section>

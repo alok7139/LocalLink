@@ -26,6 +26,11 @@ const Bookschema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref: 'User',
         required:true,
+    },
+    isbooked:{
+        type:Boolean,
+        required:true,
+        default:false,
     }
 })
 

@@ -144,14 +144,14 @@ export const bookevent = catchasyncerror(async(req,res,next) => {
         return next(new ErrorHandler("😅 Oops, Events is not found", 400));
     }
 
-    const existingBooking = await Booking.findOne({ event: id, user: userid });
+    const existingBooking = await Booking.findOne({ event: id, user: userid ,  });
 
     if (existingBooking) {
         return next(new ErrorHandler("You have already booked this event.", 400));
     }
 
     const booking = await Booking.create({
-        name , email , phone , event:id, user:userid
+        name , email , phone , event:id, user:userid  ,isbooked:true
     })
 
     res.status(201).json({
