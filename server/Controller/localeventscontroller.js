@@ -2,6 +2,7 @@ import ErrorHandler from "../middlewares/error.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import {Localevents} from "../models/localeventsmodel.js";
 import {v2 as cloudinary} from 'cloudinary'
+import { Booking } from "../models/Bookevent.js";
 
 export const registerevents = catchasyncerror(async(req,res,next) => {
     
@@ -131,6 +132,35 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
     res.status(200).json({
         success:true,
     })
+})
+
+export const bookevent = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const {name,email,phone} = req.body;
+    const userid = req.user._id;
+    const event = await Localevents.findById(id);
+
+    if(!event){
+        return next(new ErrorHandler("😅 Oops, Events is not found", 400));
+    }
+
+    const existingBooking = await Booking.findOne({ event: id, user: userid });
+
+    if (existingBooking) {
+        return next(new ErrorHandler("You have already booked this event.", 400));
+    }
+
+    const booking = await Booking.create({
+        name , email , phone , event:id, user:userid
+    })
+
+    res.status(201).json({
+        success:true,
+        message: `Event Booked Successfully for ${name}`,
+        booking,
+    })
+
+
 })
 
 
