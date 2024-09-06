@@ -44,7 +44,6 @@ function Updateevent() {
         try {
             const res = await axios.put(`http://localhost:3000/api/v1/update/event/${id}` , formdata ,{withCredentials:true , headers:{"Content-Type" : "multipart/form-data"}})
             toast.success(res.data.message);
-
         } catch (error) {
             toast.error(error.response.data.message);
         }
@@ -55,9 +54,12 @@ function Updateevent() {
         return <Navigate to={'/login'} />
     }
   return (
-    <div>
-      Updateevent
-    </div>
+      <>
+       <div className='mt-48 font-serif'>
+         <h1 className='text-center'>Update Your Event</h1>
+
+       </div>
+      </>
   )
 }
 
