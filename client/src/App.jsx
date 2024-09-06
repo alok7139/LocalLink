@@ -58,7 +58,7 @@ function App() {
          <Route path='/login' element={<Login/>}/>
          <Route path='/create/event' element={<Createevents/>} />
          <Route path='/your/event' element={<Yourevents/>} />
-         <Route path='/book/event' element={<Bookevent/>} />
+         <Route path='/book/event/:id' element={<Bookevent/>} />
        </Routes>
        <Footer/>
        <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}/>
