@@ -136,6 +136,18 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
     })
 })
 
+export const fetchdetails = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const events = await Localevents.findById(id);
+    if(!events){
+        return next(new ErrorHandler("😅 Oops, Events is not found",400));
+    }
+    res.status(201).json({
+        success:true,
+        events
+    })
+})
+
 export const bookevent = catchasyncerror(async(req,res,next) => {
     const {id} = req.params;
     const {name,email,phone} = req.body;

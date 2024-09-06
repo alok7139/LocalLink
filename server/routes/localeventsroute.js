@@ -1,4 +1,4 @@
-import { allevents, bookevent, deleteevents, getalluserevents, registerevents, updatevents } from "../Controller/localeventscontroller.js";
+import { allevents, bookevent, deleteevents, fetchdetails, getalluserevents, registerevents, updatevents } from "../Controller/localeventscontroller.js";
 import { isauthorized } from "../middlewares/auth.js";
 import express from 'express'
 
@@ -10,5 +10,6 @@ router.put('/update/event/:id' , isauthorized , updatevents);
 router.delete('/delete/event/:id' , isauthorized , deleteevents);
 router.get('/user/allevents'  , allevents)
 router.post('/book/event/:id' , isauthorized , bookevent)
+router.get('/fetch/:id' , isauthorized , fetchdetails);
 
 export default router;
