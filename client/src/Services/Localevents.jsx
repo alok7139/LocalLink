@@ -24,17 +24,26 @@ function Localevents() {
     fetchevent();
   }, []);
 
-  if (!isauthenticated) {
-    navigate('/login');
-  }
+  // if (!isauthenticated) {
+  //   navigate('/login');
+  // }
 
   return (
     <div className='mt-48 mb-20 font-serif'>
       <div className='flex justify-center flex-col items-center mb-10 gap-5'>
         <h1 className='text-4xl font-bold font-serif text-center'>Local Events</h1>
         <div className='flex flex-row justify-center items-center gap-4'>
-          <div className='bg-gray-100'><Link to={'/create/event'}><button className='p-2 bg-white rounded-lg text-blue-500 cursor-pointer'>Create Events</button></Link></div>
-          <Link to={'/your/event'}> <button className='p-2 text-blue-500 cursor-pointer'>Get Your Events</button></Link>
+          <div className='bg-gray-100'>
+            {
+              isauthenticated ? 
+              <Link to={'/create/event'}><button className='p-2 bg-white rounded-lg text-blue-500 cursor-pointer'><h1>Create Events</h1></button></Link>
+              : <button className='p-2 bg-white rounded-lg text-gray-500 cursor-not-allowed'>Create Events</button>
+            }
+          </div>
+           {isauthenticated ?
+            <Link to={'/your/event'}> <button className='p-2 text-blue-500 cursor-pointer'>Get Your Events</button></Link>
+            : <button className='p-2 text-gray-500 cursor-not-allowed'>Get Your Events</button> 
+          }
         </div>
       </div>
 
@@ -52,9 +61,13 @@ function Localevents() {
               <p className='text-gray-500'>{new Date(item.enddate).toLocaleDateString()}</p>
               <p className='text-gray-500'>{item.city}</p>
             </div>
-            <Link to={'#'}>
+            {
+              isauthenticated ? 
+              <Link to={'/'}>
               <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Book event</button>
-            </Link>
+            </Link> :
+             <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Book event</button>
+            }
           </div>
         ))}
       </div>

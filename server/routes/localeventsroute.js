@@ -5,7 +5,7 @@ import express from 'express'
 const router = express.Router();
 
 router.post('/register/events' , isauthorized , registerevents);
-router.get('/getall/events' , getalluserevents)
+router.get('/getall/events' ,isauthorized, getalluserevents)
 router.put('/update/event/:id' , isauthorized , updatevents);
 router.delete('/delete/event/:id' , isauthorized , deleteevents);
 router.get('/user/allevents'  , allevents)
