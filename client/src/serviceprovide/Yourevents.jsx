@@ -63,19 +63,17 @@ function Yourevents() {
             <p className='text-gray-500'>{new Date(item.enddate).toLocaleDateString()}</p>
             <p className='text-gray-500'>{item.city}</p>
           </div>
-          <div className='flex flex-col lg:flex-row gap-2 justify-evenly items-center mt-1'>
-  <Link to={`/update/event/${item._id}`} className='w-full'>
+          <div className='flex flex-col lg:flex-row gap-2 justify-between items-center mt-1'>
+  <Link to={`/update/event/${item._id}`} className='w-full lg:w-auto'>
     <button className='bg-blue-500 text-white py-2 px-4 rounded-lg w-full sm:w-auto'>Update</button>
   </Link>
  
-
   <button 
     className='bg-red-500 text-white py-2 px-4 rounded-lg w-full sm:w-auto' 
     onClick={() => deleteevent(item._id)}>
     Delete
   </button>
 
-  
 </div>
 
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Gardening() {
   return (
-    <div>
+    <div className='mt-48 mb-10'>
       Gardening
     </div>
   )
