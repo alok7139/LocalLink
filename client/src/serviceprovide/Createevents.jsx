@@ -46,7 +46,7 @@ function Createevents() {
       await axios.post("http://localhost:3000/api/v1/register/events" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
       .then((res) => {
         toast.success(res.data.message);
-        navigate('/');
+        navigate('/localevents');
       })
     } catch (error) {
       toast.error(error.response.data.message);
@@ -137,7 +137,7 @@ function Createevents() {
     <button
       onClick={handleregister}
       className='mt-6 bg-blue-500 text-white py-2 px-6 rounded-lg w-full md:w-auto'>
-      Update Event
+      Submit
     </button>
   </div>
 </div>
