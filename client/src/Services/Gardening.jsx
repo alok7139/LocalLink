@@ -72,9 +72,9 @@ function Gardening() {
             {
             isauthenticated ? 
             <Link to={`/garden/service/${item._id}`}>
-            <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Book</button>
+            <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Apply</button>
           </Link> :
-           <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Book</button>
+           <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Apply</button>
           }
              
           </div>
