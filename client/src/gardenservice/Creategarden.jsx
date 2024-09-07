@@ -42,7 +42,8 @@ const handlesvg = (e) => {
       try {
         await axios.post("http://localhost:3000/api/v1/post/garden/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } })
         .then((res) => {
-            toast.success(res.data);
+            console.log(res)
+            toast.success(res.data.message);
             navigate('/gardening');
         })
       } catch (error) {
@@ -68,7 +69,7 @@ const handlesvg = (e) => {
         src={
             gardensvgpreview
             ? gardensvgpreview
-            : 'https://www.midwestliving.com/thmb/8ymIsj_GY_8hBhuWCdDydjVDKEw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/100846895_preview-2000-f954404babaa44138a0159a6ba9ab399.jpg'
+            : 'https://i0.wp.com/kandua.com/-/wp-content/uploads/2023/08/Untitled-design-1.jpg?fit=1600%2C900&ssl=1'
         }
         alt="garden"
         className='w-full h-64 object-cover rounded-sm'
