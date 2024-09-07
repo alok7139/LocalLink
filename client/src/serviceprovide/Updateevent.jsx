@@ -102,7 +102,7 @@ function Updateevent() {
             src={
               localeventsvgpreview
                 ? localeventsvgpreview
-                : 'https://apps.odoo.com/web/image/loempia.module/89530/icon_image?unique=33fca66'
+                : 'https://www.day2trust.com/wp-content/uploads/2016/06/events.jpg'
             }
             alt={localeventname}
             className='w-full h-64 object-cover rounded-sm'

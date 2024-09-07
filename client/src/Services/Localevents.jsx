@@ -36,8 +36,8 @@ function Localevents() {
           <div className='bg-gray-100'>
             {
               isauthenticated ? 
-              <Link to={'/create/event'}><button className='p-2 bg-white rounded-lg text-blue-500 cursor-pointer'><h1>Create Events</h1></button></Link>
-              : <button className='p-2 bg-white rounded-lg text-gray-500 cursor-not-allowed'>Create Events</button>
+              <Link to={'/create/event'}><button className='p-2 bg-white rounded-lg text-blue-500 cursor-pointer'><h1>Post Events</h1></button></Link>
+              : <button className='p-2 bg-white rounded-lg text-gray-500 cursor-not-allowed'>Post Events</button>
             }
           </div>
            {isauthenticated ?

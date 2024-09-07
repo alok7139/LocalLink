@@ -60,7 +60,7 @@ function Createevents() {
   return (
     <div className='mt-48 mb-10 px-4 sm:px-8 font-serif'>
     <div className='flex justify-center flex-col items-center mb-10 gap-5'>
-      <h1 className='text-2xl md:text-4xl font-bold text-center'>Create Event</h1>
+      <h1 className='text-2xl md:text-4xl font-bold text-center'>Post Event</h1>
     </div>
 
     <div className='flex flex-col md:flex-row gap-10 justify-center items-start md:items-center'>
@@ -70,7 +70,7 @@ function Createevents() {
           src={
             localeventsvgpreview
               ? localeventsvgpreview
-              : 'https://apps.odoo.com/web/image/loempia.module/89530/icon_image?unique=33fca66'
+              : 'https://www.day2trust.com/wp-content/uploads/2016/06/events.jpg'
           }
           alt={localeventname}
           className='w-full h-64 object-cover rounded-sm'
