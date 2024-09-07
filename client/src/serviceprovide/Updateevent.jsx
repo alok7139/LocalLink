@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../main';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 function Updateevent() {
   const { isauthenticated } = useContext(Context);
+  const navigate = useNavigate();
   const { id } = useParams();
   const [localeventname, setlocaleventname] = useState('');
   const [startdate, setstartdate] = useState('');
@@ -17,30 +18,31 @@ function Updateevent() {
   const [localeventsvg, setlocaleventsvg] = useState('');
   const [localeventsvgpreview, setlocaleventsvgpreview] = useState('');
 
-//   useEffect(() => {
-//     const fetchevent = async () => {
-//       try {
-//         console.log(id);
-//         const { events } = await axios.get(`http://localhost:3000/api/v1/fetch/${id}`, { withCredentials: true });
-//         // console.log(1);
-//         setlocaleventname(events.localeventname);
-//         // console.log(1);
-//         setstartdate(new Date(events.startdate).toISOString().split('T')[0]); // Format date for input
-//         setenddate(new Date(events.enddate).toISOString().split('T')[0]);
-//         setowner(events.owner);
-//         setaddress(events.address);
-//         setphone(events.phone);
-//         setcity(events.city);
-//         setlocaleventsvg(events.localeventsvg.url)
-//         setlocaleventsvgpreview(events.localeventsvg.url);
-//       } catch (error) {
-//         console.error(error.response || error.message || "Unknown error");
-//         toast.error("Error fetching event data");
-//       }
-//     };
+  useEffect(() => {
+    const fetchevent = async () => {
+      try {
+        const  response = await axios.get(`http://localhost:3000/api/v1/fetch/${id}`, { withCredentials: true });
+        console.log(response);
+        const eventData = response.data.events;
+        // console.log(1);
+        setlocaleventname(eventData.localeventname);
+        // console.log(1);
+        setstartdate(new Date(eventData.startdate).toISOString().split('T')[0]); 
+        setenddate(new Date(eventData.enddate).toISOString().split('T')[0]);
+        setowner(eventData.owner);
+        setaddress(eventData.address);
+        setphone(eventData.phone);
+        setcity(eventData.city);
+        setlocaleventsvg(eventData.localeventsvg.url)
+        setlocaleventsvgpreview(eventData.localeventsvg.url);
+      } catch (error) {
+        console.error(error.response || error.message || "Unknown error");
+        toast.error("Error fetching event data");
+      }
+    };
 
-//     fetchevent();
-//   }, [id]);
+    fetchevent();
+  }, [id]);
 
   const handlesvg = (e) => {
     const file = e.target.files[0];
@@ -77,6 +79,7 @@ function Updateevent() {
       setcity('')
       setowner('')
       setlocaleventsvg('');
+      navigate('/');
     } catch (error) {
       toast.error(error.response.data.message);
     }

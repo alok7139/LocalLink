@@ -8,7 +8,7 @@ import { Booking } from "../models/Bookevent.js";
 export const registerevents = catchasyncerror(async(req,res,next) => {
     
     if(!req.files || Object.keys(req.files).length === 0){
-        return next(new ErrorHandler("Image is required",400));
+        return next(new ErrorHandler("Event Post is required",400));
     }
 
     const {localeventsvg} = req.files;
@@ -50,6 +50,7 @@ export const registerevents = catchasyncerror(async(req,res,next) => {
 
     res.status(201).json({
        success:true,
+       message: "Event Posted Successfully",
        newevents
     })
 })
