@@ -11,7 +11,7 @@ const gardeningSchema = new mongoose.Schema({
         required:true,
     },
     posteddate:{
-        type:String,
+        type:Date,
         required:true,
     },
     address:{
@@ -27,10 +27,10 @@ const gardeningSchema = new mongoose.Schema({
         required:true,
     },
     country:{
-        typ:String,
-        required:true,
+        type:String,
+        default:"India",
     },
-    garden:{
+    gardensvg:{
         public_id:{
             type:String,
             required:true,

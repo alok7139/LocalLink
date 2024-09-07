@@ -26,7 +26,7 @@ export const registerevents = catchasyncerror(async(req,res,next) => {
 
     if(!cloudinaryresponse || cloudinaryresponse.error){
         console.log("cloudinary Error" , cloudinaryresponse.error || "Unknown cloudinary response");
-        return next(new ErrorHandler("Failed to upload resume!" , 500));
+        return next(new ErrorHandler("Failed to upload Image!" , 500));
     };
 
 
