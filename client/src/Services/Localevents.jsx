@@ -56,10 +56,10 @@ function Localevents() {
               <img src={item.localeventsvg.url} alt={item.localeventname} className='w-full h-36 object-cover rounded-t-lg' />
             </div>
             <div className='p-3'>
-              <p className='font-bold text-lg'>{item.localeventname}</p>
-              <p className='text-gray-500'>{new Date(item.startdate).toLocaleDateString()}</p>
-              <p className='text-gray-500'>{new Date(item.enddate).toLocaleDateString()}</p>
-              <p className='text-gray-500'>{item.city}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Event Name : </span> {item.localeventname}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Start Date : </span> {new Date(item.startdate).toLocaleDateString()}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>End Date : </span> {new Date(item.enddate).toLocaleDateString()}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Address : </span>{item.address} {" , "} {item.city}</p>
             </div>
             
             {

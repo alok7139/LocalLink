@@ -126,7 +126,7 @@ export const deleteevents = catchasyncerror(async(req,res,next) => {
     const {id} = req.params;
     const events = await Localevents.findById(id);
     if(!events){
-        return next(new ErrorHandler("😅 Oops, Events is not found",400));
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
     }
     const localeventimageid = events.localeventsvg.public_id;
     await cloudinary.uploader.destroy(localeventimageid);
@@ -141,7 +141,7 @@ export const fetchdetails = catchasyncerror(async(req,res,next) => {
     const {id} = req.params;
     const events = await Localevents.findById(id);
     if(!events){
-        return next(new ErrorHandler("😅 Oops, Events is not found",400));
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
     }
     res.status(201).json({
         success:true,
@@ -156,7 +156,7 @@ export const bookevent = catchasyncerror(async(req,res,next) => {
     const event = await Localevents.findById(id);
 
     if(!event){
-        return next(new ErrorHandler("😅 Oops, Events is not found", 400));
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more", 400));
     }
 
     const existingBooking = await Booking.findOne({ event: id, user: userid ,  });

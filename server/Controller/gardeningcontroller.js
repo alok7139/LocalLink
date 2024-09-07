@@ -2,6 +2,7 @@ import ErrorHandler from "../middlewares/error.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import { Garden } from "../models/Gardening.js";
 import  {v2 as cloudinary } from 'cloudinary'
+import { BookGarden } from "../models/Bookgarden.js";
 
 export  const registergarden = catchasyncerror(async(req,res,next) => {
 
@@ -69,7 +70,7 @@ export const deleteservice = catchasyncerror(async(req,res,next) => {
     const garden = await Garden.findById(id);
 
     if(!garden){
-        return next(new ErrorHandler("😅 Oops, Events is not found",400));
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
     }
     const gardensvgid = garden.gardensvg.public_id;
     await cloudinary.uploader.destroy(gardensvgid);
@@ -77,5 +78,31 @@ export const deleteservice = catchasyncerror(async(req,res,next) => {
     res.status(201).json({
         sucess:true,
         message: "Service Deleted Successfully",
+    })
+})
+
+export const bookgarden = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const {name , email , phone , address , adharcard} = req.body;
+    const userid = req.user._id;
+    const gardenservice = await Garden.findById(id);
+    if(!gardenservice){
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
+    }
+
+    const existingservice = await BookGarden.findOne({user:userid ,gardenservice:id });
+
+    if(existingservice){
+        return next(new ErrorHandler("You have already booked this Service", 400));
+    }
+
+    const booking = await BookGarden.create({
+        name , email , phone , address, adharcard , user:userid , gardenservice:id
+    })
+
+    res.status(201).json({
+        success:true,
+        message: "Service Booked Successfully",
+        booking,
     })
 })

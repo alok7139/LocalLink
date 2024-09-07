@@ -46,6 +46,7 @@ function Bookevent() {
         setemail('')
         setphone('')
         setisbooked(false);
+        navigate('/localevents')
     }).catch((error) => {
         toast.error(error.response.data.message);
     })
