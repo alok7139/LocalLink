@@ -53,7 +53,7 @@ function Localevents() {
             key={item._id} 
             className='bg-white rounded-xl border shadow-md p-3 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)]'>
             <div>
-              <img src={item.localeventsvg.url} alt={item.localeventname} className='w-full h-36 object-cover rounded-t-lg' />
+              <img src={item.localeventsvg.url} alt={item.localeventname} className='w-full h-72 object-cover rounded-t-lg' />
             </div>
             <div className='p-3'>
               <p className='font-bold text-lg'><span className='font-thin'>Event Name : </span> {item.localeventname}</p>

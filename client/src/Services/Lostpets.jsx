@@ -52,22 +52,23 @@ function Lostpets() {
             key={item._id} 
             className='bg-white rounded-xl border shadow-md p-3 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)]'>
             <div>
-              <img src={item.localeventsvg.url} alt={item.localeventname} className='w-full h-36 object-cover rounded-t-lg' />
+              <img src={item.petsvg.url} alt={item.petname} className='w-full h-72 object-cover rounded-t-lg' />
             </div>
             <div className='p-3'>
-              <p className='font-bold text-lg'><span className='font-thin'>Pet owner : </span> {item.localeventname}</p>
-              <p className='font-bold text-lg'><span className='font-thin'>Start Date : </span> {new Date(item.startdate).toLocaleDateString()}</p>
-              <p className='font-bold text-lg'><span className='font-thin'>End Date : </span> {new Date(item.enddate).toLocaleDateString()}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Pet owner : </span> {item.petowner}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Pet Name : </span> {item.petname}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Owner Phone No. : </span> {item.phone}</p>
+              <p className='font-bold text-lg'><span className='font-thin'>Reward : </span> {item.reward} Rs</p>
               <p className='font-bold text-lg'><span className='font-thin'>Address : </span>{item.address} {" , "} {item.city}</p>
             </div>
             
-            {
+            {/* {
             isauthenticated ? 
             <Link to={`/book/event/${item._id}`}>
             <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Book event</button>
           </Link> :
            <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Book event</button>
-          }
+          } */}
              
           </div>
         ))}
