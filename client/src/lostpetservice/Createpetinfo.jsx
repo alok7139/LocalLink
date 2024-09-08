@@ -54,9 +54,9 @@ function Createpetinfo() {
 
 
 
-    if(!isauthenticated){
-        return navigate('/login');
-    }
+    // if(!isauthenticated){
+    //     return navigate('/login');
+    // }
 
 
 
@@ -73,9 +73,9 @@ function Createpetinfo() {
           src={
             petsvgpreview
               ? petsvgpreview
-              : 'https://i0.wp.com/kandua.com/-/wp-content/uploads/2023/08/Untitled-design-1.jpg?fit=1600%2C900&ssl=1'
+              : '/petpreview.png'
           }
-          alt="garden"
+          alt="pet"
           className='w-full h-64 object-cover rounded-sm'
         />
         <input type='file' className='mt-4 w-full p-2 border rounded-lg' onChange={handlesvg} />
@@ -131,7 +131,7 @@ function Createpetinfo() {
           rows="2"
           value={message}
           placeholder="Message"
-          className={`text-black ${errors.message ? 'border-red-500' : 'border-gray-300'} w-full p-2 border rounded-lg`}
+          className={`text-black  w-full p-2 border rounded-lg`}
           onChange={(e) => setmessage(e.target.value)}
         />
 
