@@ -28,7 +28,7 @@ export const registerpet = catchasyncerror(async(req,res,next) => {
     }
 
 
-    const {petname , petowner ,  phone , city , address ,reward } = req.body;
+    const {petname , petowner ,  phone , city , address ,reward , message } = req.body;
 
     if(!petname || !petowner ||  !phone || !city || !address || !reward ){
         return next(new ErrorHandler("Fill all the details",400));
@@ -37,7 +37,7 @@ export const registerpet = catchasyncerror(async(req,res,next) => {
     const postedby = req.user._id;
 
     const newpet = await Pet.create({
-        petname , petowner , phone , city , address , reward , postedby , 
+        petname , petowner , phone , city , address , reward , postedby , message ,
         petsvg:{
             public_id: (await cloudinaryresponse).public_id,
             url:(await cloudinaryresponse).secure_url

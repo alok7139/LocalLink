@@ -53,7 +53,7 @@ function Yourevents() {
       {allevent && allevent.myevents &&  allevent.myevents.length>0 ? allevent.myevents.map((item) => (
         <div 
           key={item._id} 
-          className='bg-white rounded-xl border shadow-md p-3 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)]'>
+          className='bg-white rounded-xl border shadow-md p-3 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)]  hover:shadow-lg transition-all duration-500'>
           <div>
             <img src={item.localeventsvg.url} alt={item.localeventname} className='w-full h-72 object-cover rounded-t-lg' />
           </div>

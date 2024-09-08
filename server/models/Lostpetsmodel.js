@@ -1,6 +1,7 @@
 import mongoose, { mongo } from "mongoose";
 
 
+
 const lostpetschema = new mongoose.Schema({
     petowner:{
         type:String,
@@ -44,6 +45,9 @@ const lostpetschema = new mongoose.Schema({
     country:{
         type:String,
         default:"India",
+    },
+    message:{
+        type:String,
     }
 
 })
