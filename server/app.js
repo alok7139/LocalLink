@@ -9,6 +9,10 @@ import { errormiddleware } from './middlewares/error.js';
 import useroute from './routes/userroute.js'
 import localevents from './routes/localeventsroute.js'
 import gardenroute from './routes/gardenroute.js'
+import { generateKeyPair } from 'crypto';
+import lostpetroute from './routes/lostpetroute.js'
+
+// const lenos = import('os').cpus().length();
 
 
 const app = express();
@@ -33,6 +37,7 @@ app.use('/api/v1', messagerouter);
 app.use('/api/v1' ,useroute);
 app.use('/api/v1' , localevents);
 app.use('/api/v1' , gardenroute);
+app.use('/api/v1' , lostpetroute);
 
 dbconnection();
 
