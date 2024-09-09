@@ -16,6 +16,34 @@ function Creategarden() {
   const [posteddate, setposteddate] = useState('')
   const [gardensvg, setgardensvg] = useState('')
   const [gardensvgpreview, setgardensvgpreview] = useState('')
+  const [error,seterror] = useState({houseowner: '' , gardensvg: '' , salary: '' , posteddate :'' , address: '' , phone:'' , city:''});
+
+  const validateForm = () => {
+    const newerrors = {};
+    if(!houseowner){
+      newerrors.petname = 'Service Provider Name is required';
+    }
+    if(!posteddate){
+      newerrors.petowner = 'Start Date is required';
+    }
+    if(!salary){
+      newerrors.reward = 'Salary is required';
+    }
+    
+    if(!address){
+      newerrors.address = 'Address is required';
+    }
+    if(!phone){
+      newerrors.phone = 'Phone Number is required';
+    }
+    if(!city){
+      newerrors.city = 'City is required';
+    }
+    if(!gardensvg){
+      newerrors.petsvg = 'Garden Preview is required';
+    }
+    return newerrors;
+  }
 
 
 const handlesvg = (e) => {
@@ -31,6 +59,13 @@ const handlesvg = (e) => {
 
   const handleregister = async(e) => {
       e.preventDefault();
+      
+      const validateform = validateForm();
+      if(Object.keys(validateform).length > 0){
+        seterror(validateform);
+        return;
+      }
+
       const formdata = new FormData();
       formdata.append("houseowner" , houseowner);
       formdata.append("phone" , phone);
@@ -74,7 +109,8 @@ const handlesvg = (e) => {
         alt="garden"
         className='w-full h-auto object-cover rounded-sm'
       />
-      <input type='file' className='mt-4 w-full p-2 border rounded-lg' onChange={handlesvg} />
+      <input type='file' className={`mt-4 w-full p-2 border rounded-lg  ${error.gardensvg ? 'border-red-500' : 'border-gray-300'}`} onChange={handlesvg} />
+      {error.gardensvg && <p className='text-red-500 mt-2 text-sm'>{error.gardensvg}</p>}
     </div>
 
     <div className='w-full md:w-2/3 lg:w-2/3 space-y-4'>
