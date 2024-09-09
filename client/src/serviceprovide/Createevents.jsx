@@ -18,6 +18,7 @@ function Createevents() {
   const [city, setcity] = useState('');
   const [localeventsvg, setlocaleventsvg] = useState('');
   const [localeventsvgpreview, setlocaleventsvgpreview] = useState('');
+  const [first, setfirst] = useState(second)
 
   const handlesvg = (e) => {
     const file = e.target.files[0];
@@ -70,10 +71,10 @@ function Createevents() {
         src={
           localeventsvgpreview
             ? localeventsvgpreview
-            : 'https://www.day2trust.com/wp-content/uploads/2016/06/events.jpg'
+            : 'https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon.png'
         }
         alt={localeventname}
-        className='w-full h-64 object-cover rounded-sm'
+        className='w-full h-full object-cover rounded-sm'
       />
       <input type='file' className='mt-4 w-full p-2 border rounded-lg' onChange={handlesvg} />
     </div>

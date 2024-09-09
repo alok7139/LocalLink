@@ -73,10 +73,10 @@ function Createpetinfo() {
           src={
             petsvgpreview
               ? petsvgpreview
-              : '/petpreview.png'
+              : 'https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon.png'
           }
           alt="pet"
-          className='w-full h-64 object-cover rounded-sm'
+          className='w-full h-auto object-cover rounded-sm'
         />
         <input type='file' className='mt-4 w-full p-2 border rounded-lg' onChange={handlesvg} />
       </div>

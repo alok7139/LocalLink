@@ -64,15 +64,15 @@ const handlesvg = (e) => {
 
   <div className='flex flex-col md:flex-row gap-10 justify-center items-start md:items-start lg:items-center'>
     <div className='w-full md:w-1/2 lg:w-1/3'>
-      <h2 className='mb-4 text-xl font-semibold text-blue-200 underline'>Garden Preview</h2>
+      <h2 className='mb-4 text-xl font-semibold text-blue-200 underline'>Garden Image</h2>
       <img
         src={
             gardensvgpreview
             ? gardensvgpreview
-            : 'https://i0.wp.com/kandua.com/-/wp-content/uploads/2023/08/Untitled-design-1.jpg?fit=1600%2C900&ssl=1'
+            : 'https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon.png'
         }
         alt="garden"
-        className='w-full h-64 object-cover rounded-sm'
+        className='w-full h-auto object-cover rounded-sm'
       />
       <input type='file' className='mt-4 w-full p-2 border rounded-lg' onChange={handlesvg} />
     </div>
