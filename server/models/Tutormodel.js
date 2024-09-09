@@ -12,7 +12,7 @@ const tutorSchema = new mongoose.Schema({
     typeoftutor:{
         type:String,
         required:true,
-        enum: ["Online Tutor" , "Homewrok Helper" , "Test Prep Tutor" , "Academics Tutor"],
+        enum: ["Online Tutor" , "Homework Helper" , "Test Prep Tutor" , "Academics Tutor"],
     },
     subject:{
         type:String,

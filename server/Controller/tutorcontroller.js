@@ -39,3 +39,57 @@ export const getalltutor = catchasyncerror(async(req,res,next) => {
         getalltutor
     })
 })
+
+export const deleteusertutor = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const tutorservice = await Tutor.findById(id);
+
+    if(!tutorservice){
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
+    }
+
+    await tutorservice.deleteOne();
+    res.status(200).json({
+        success:true,
+        message:"Deleted Successfully",
+    })
+})
+
+export const fetchservice = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const tutorservice = await Tutor.findById(id);
+    if(!tutorservice){
+        return next (new ErrorHandler("😅 Oops, This Service is not avaliable any more",400))
+    }
+    res.status(200).json({
+        sucess:true,
+        tutorservice
+    })
+})
+
+export const updatetutor = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    
+    const updatetutor = {
+        tutorname: req.body.tutorname,
+        tutorfee: req.body.tutorfee,
+        subject: req.body.subject,
+        typeoftutor: req.body.typeoftutor,
+        time: req.body.time,
+        phone:req.body.phone
+
+    }
+
+    const tutor = await Tutor.findByIdAndUpdate(id , updatetutor , {
+        new:true,
+        runValidators:true,
+        useFindAndModify: false,
+    })
+
+    res.status(200).json({
+        success:true,
+        message:"Your request updated Successfully",
+        tutor
+    })
+    
+})
