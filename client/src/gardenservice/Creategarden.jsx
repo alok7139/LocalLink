@@ -21,13 +21,13 @@ function Creategarden() {
   const validateForm = () => {
     const newerrors = {};
     if(!houseowner){
-      newerrors.petname = 'Service Provider Name is required';
+      newerrors.houseowner = 'Service Provider Name is required';
     }
     if(!posteddate){
-      newerrors.petowner = 'Start Date is required';
+      newerrors.posteddate = 'Start Date is required';
     }
     if(!salary){
-      newerrors.reward = 'Salary is required';
+      newerrors.salary = 'Salary is required';
     }
     
     if(!address){
@@ -40,7 +40,7 @@ function Creategarden() {
       newerrors.city = 'City is required';
     }
     if(!gardensvg){
-      newerrors.petsvg = 'Garden Preview is required';
+      newerrors.gardensvg = 'Garden Preview is required';
     }
     return newerrors;
   }
@@ -114,50 +114,66 @@ const handlesvg = (e) => {
     </div>
 
     <div className='w-full md:w-2/3 lg:w-2/3 space-y-4'>
+    <div className='flex flex-col w-full'>
       <input
         type='text'
-        className='w-full p-2 border rounded-lg'
+        className={`w-full p-2 border rounded-lg ${error.houseowner ? 'border-red-500' : 'border-gray-300'}`}
         value={houseowner}
         placeholder='Service Provider Name'
         onChange={(e) => sethouseowner(e.target.value)}
       />
-      
+      {error.houseowner && <p className='text-red-500 mt-2 text-sm'>{error.houseowner}</p>}
+      </div>
+        <div className='flex flex-col w-full'>
         <input
           type='date'
-          className='w-full p-2 border rounded-lg'
+          className={`w-full p-2 border rounded-lg ${error.posteddate ? 'border-red-500' : 'border-gray-300'}`}
           value={posteddate}
           placeholder='Start Date'
           onChange={(e) => setposteddate(e.target.value)}
         />
-        
+        {error.posteddate && <p className='text-red-500 mt-2 text-sm'>{error.posteddate}</p>}
+        </div>
+        <div className='flex flex-col w-full'>
       <input
         type='text'
-        className='w-full p-2 border rounded-lg'
+        className={`w-full p-2 border ${error.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg`}
         value={phone}
         placeholder='Enter the Phone No'
         onChange={(e) => setphone(e.target.value)}
       />
+      {error.phone && <p className='text-red-500 mt-2 text-sm'>{error.phone}</p>}
+       </div>
+<div className='flex flex-col w-full'>
       <input
         type='text'
-        className='w-full p-2 border rounded-lg'
+        className={`w-full p-2 border rounded-lg ${error.salary ? 'border-red-500' : 'border-gray-300'}`}
         value={salary}
         placeholder='Expected Salary'
         onChange={(e) => setsalary(e.target.value)}
       />
+      {error.salary && <p className='text-red-500 mt-2 text-sm'>{error.salary}</p>}
+       </div>
+<div className='flex flex-col w-full'>
       <input
         type='text'
-        className='w-full p-2 border rounded-lg'
+        className={`w-full p-2 border rounded-lg ${error.address ? 'border-red-500' : 'border-gray-300'}`}
         value={address}
         placeholder='Enter the Address'
         onChange={(e) => setaddress(e.target.value)}
       />
+      {error.address && <p className='text-red-500 mt-2 text-sm'>{error.address}</p>}
+       </div>
+<div className='flex flex-col w-full'>
       <input
         type='text'
-        className='w-full p-2 border rounded-lg'
+        className={`w-full p-2 border rounded-lg ${error.city ? 'border-red-500' : 'border-gray-300'}`}
         value={city}
         placeholder='Enter the City'
         onChange={(e) => setcity(e.target.value)}
       />
+      {error.city && <p className='text-red-500 mt-2 text-sm'>{error.city}</p>}
+      </div>
     </div>
   </div>
 
