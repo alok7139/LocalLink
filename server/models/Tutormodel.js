@@ -9,15 +9,20 @@ const tutorSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    typeoftutor:{
+        type:String,
+        required:true,
+        enum: ["Online Tutor" , "Homewrok Helper" , "Test Prep Tutor" , "Academics Tutor"],
+    },
     subject:{
         type:String,
         required:true,
     },
-    city:{
+    time:{
         type:String,
         required:true,
     },
-    address:{
+    phone:{
         type:String,
         required:true,
     },
@@ -33,4 +38,4 @@ const tutorSchema = new mongoose.Schema({
 
 })
 
-const Tutor = mongoose.model("Tutor" , tutorSchema);
+export const Tutor = mongoose.model("Tutor" , tutorSchema);
