@@ -11,6 +11,10 @@ export const Footer = lazy(() => import('./components/Footer'));
 import LOader from './components/Loader';
 import { Context } from './main';
 import axios from 'axios';
+export const Createservice = lazy(() => import('./tutorservice/createservice'))
+export const Yourtutor = lazy(() => import('./tutorservice/yourtutor'))
+export const Updatetutor = lazy(() => import('./tutorservice/updatetutor'))
+export const Booktutor = lazy(() => import('./tutorservice/booktutor'))
 export const Createpetinfo = lazy(() => import('./lostpetservice/createpetinfo'))
 export const Yourpetinfo = lazy(() => import('./lostpetservice/yourpetinfo'))
 export const Creategarden = lazy(() => import('./gardenservice/Creategarden'))
@@ -71,6 +75,10 @@ function App() {
          <Route path='/your/service' element={<Yourservice/>} />
          <Route path='/missing/pet/info' element={<Createpetinfo/>}/>
          <Route path='/missing/your/pet' element={<Yourpetinfo/>} />
+         <Route path='/create/service/tutor' element={<Createservice/>}/>
+         <Route path='/your/tutor/service' element={<Yourtutor/>}/>
+         <Route path='/update/tutor/:id' element={<Updatetutor/>}/>
+         <Route path='/book/tutor/service/:id' element={<Booktutor/>}/>
        </Routes>
        <Footer/>
        <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}/>
