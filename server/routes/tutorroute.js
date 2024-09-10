@@ -1,6 +1,6 @@
 import express from 'express'
 import { isauthorized } from "../middlewares/auth.js";
-import { deleteusertutor, fetchservice, getalltutor, getallusertutor, registertutor, updatetutor } from '../Controller/tutorcontroller.js';
+import { booktutor, deleteusertutor, fetchservice, getalltutor, getallusertutor, registertutor, updatetutor } from '../Controller/tutorcontroller.js';
 
 const router = express.Router();
 
@@ -10,5 +10,6 @@ router.get("/get/all/tutor" , getalltutor);
 router.delete("/get/delete/:id" , isauthorized , deleteusertutor);
 router.put("/get/update/:id" , isauthorized , updatetutor);
 router.get("/get/info/:id" , isauthorized , fetchservice);
+router.post("/book/tutor/service/:id" , isauthorized , booktutor);
 
 export default router;
