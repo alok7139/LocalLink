@@ -12,6 +12,7 @@ import gardenroute from './routes/gardenroute.js'
 import { generateKeyPair } from 'crypto';
 import lostpetroute from './routes/lostpetroute.js'
 import tutorroute from './routes/tutorroute.js'
+import handymanroute from './routes/handymanroute.js'
 
 // const lenos = import('os').cpus().length();
 
@@ -40,6 +41,7 @@ app.use('/api/v1' , localevents);
 app.use('/api/v1' , gardenroute);
 app.use('/api/v1' , lostpetroute);
 app.use('/api/v1' , tutorroute);
+app.use('/api/v1' , handymanroute);
 
 dbconnection();
 

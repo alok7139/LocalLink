@@ -17,6 +17,17 @@ const handymanschema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    
+    fee:{
+        type:String,
+        required:true,
+    },
+    postedby:{
+        type:mongoose.Schema.ObjectId,
+        ref:"User",
+        required:true,
+        
+    }
 
 })
+
+export const Handyman = mongoose.model("Handyman" , handymanschema);
