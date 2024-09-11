@@ -91,7 +91,7 @@ export const booktutor = catchasyncerror(async(req,res,next) => {
 
     res.status(201).json({
         success:true,
-        message:"Your tutor Service is Booked",
+        message:`Your Service is Booked ${name}`,
         booking
     })
 
