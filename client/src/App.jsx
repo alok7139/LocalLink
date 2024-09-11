@@ -33,8 +33,16 @@ export const Sales = lazy(() => import("./Services/Sales"))
 export const Gardening = lazy(() => import("./Services/Gardening"))
 export const Register = lazy(() => import("./components/Register"))
 
+const customId = "custom-id-yes";
+
 function App() {
   const {isauthenticated , setisauthenticated , setuser} = useContext(Context)
+
+  const notify = () => {
+    toast("I cannot be duplicated!", {
+      toastId: customId
+    });
+  }
 
   useEffect(() => {
     const fetchuser = async() => {
@@ -81,8 +89,20 @@ function App() {
          <Route path='/book/tutor/service/:id' element={<Booktutor/>}/>
        </Routes>
        <Footer/>
-       <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}/>
+       
        </Suspense>
+       <ToastContainer position='bottom-left' transition={Bounce} autoClose={5000}
+      //  position="top-right"
+      //  autoClose={5000}
+       hideProgressBar={false}
+       newestOnTop={false}
+       closeOnClick
+       rtl={false}
+       limit={1}
+       pauseOnFocusLoss
+       draggable
+       pauseOnHover
+       />
     </>
   )
 }
