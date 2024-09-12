@@ -40,3 +40,21 @@ export const allhandymanservice = catchasyncerror(async(req,res,next) => {
     })
 })
 
+export const deleteservice = catchasyncerror(async (req, res, next) => {
+    const { id } = req.params;
+    console.log(req.params);
+    const service = await Handyman.findById(id);
+    
+    if (!service) {
+        return next(new ErrorHandler("😅 Oops, This Service is not available anymore", 400));
+    }
+    
+    await service.deleteOne();
+    res.status(200).json({
+        success: true,
+        message: "Deleted Successfully",
+    });
+});
+
+
+
