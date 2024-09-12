@@ -24,7 +24,19 @@ export const registerservice = catchasyncerror(async(req,res,next) => {
 })
 
 export const userservice = catchasyncerror(async(req,res,next) => {
-    const {id} = req.user._id;
-    
+    const User = req.user;
+    const handymanservice = await Handyman.find({postedby:User});
+    res.status(201).json({
+        success:true,
+        handymanservice
+    })
+})
+
+export const allhandymanservice = catchasyncerror(async(req,res,next) => {
+    const handymanservice = await Handyman.find({});
+    res.status(201).json({
+        success:true,
+        handymanservice
+    })
 })
 
