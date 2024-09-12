@@ -1,6 +1,7 @@
 import { Handyman } from "../models/handyman.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import ErrorHandler from "../middlewares/error.js";
+import { message } from "./messagecontroller.js";
 
 
 export const registerservice = catchasyncerror(async(req,res,next) => {
@@ -55,6 +56,42 @@ export const deleteservice = catchasyncerror(async (req, res, next) => {
         message: "Deleted Successfully",
     });
 });
+
+export const updateservice = catchasyncerror(async(req,res,next) => {
+    const updateservice = {
+        name: req.body.name,
+        fee: req.body.fee,
+        typeofservice: req.body.typeofservice,
+        phone: req.body.phone,
+        address: req.body.address
+    }
+
+    const handyservice = await Handyman.findByIdAndUpdate(req.params.id , updateservice , {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    })
+
+    res.status(201).json({
+        success:true,
+        message:"Updated Successfully",
+        handyservice
+    })
+})
+
+export const fetchdetails = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const fetchhandyman = await Handyman.findById(id);
+    if(!fetchdetails){
+        return next(new ErrorHandler("😅 Oops, This Service is not available anymore", 400));
+    }
+
+    res.status(201).json({
+        success:true,
+        fetchhandyman
+    })
+     
+})
 
 
 
