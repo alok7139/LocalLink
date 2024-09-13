@@ -1,7 +1,7 @@
 import { Handyman } from "../models/handyman.js";
 import { catchasyncerror } from "../middlewares/catchasyncerror.js";
 import ErrorHandler from "../middlewares/error.js";
-import { message } from "./messagecontroller.js";
+
 
 
 export const registerservice = catchasyncerror(async(req,res,next) => {
@@ -23,6 +23,52 @@ export const registerservice = catchasyncerror(async(req,res,next) => {
         handyman
     })
 })
+
+// export const bookhandymanservice = catchasyncerror(async(req,res,next) => {
+//     const {id}  =req.params;
+//     const handymanservice = await Handyman.findById(id);
+//     const userid = req.user._id;
+
+//     if(!handymanservice){
+//         return next(new ErrorHandler("This service is not available",400));
+//     }
+//     if (handymanservice.isbooked!==userid) {
+//         return next(new ErrorHandler("Already Booked Service", 400));
+//     }
+//     handymanservice.isbooked = userid;
+//     await handymanservice.save();
+
+//     res.status(200).json({
+//         success:true,
+//         message:"Successfully Booked"
+//     })
+// })
+
+
+
+export const bookhandymanservice = catchasyncerror(async (req, res, next) => {
+  const { id } = req.params;
+  const userId = req.user._id; // Extract user ID from request
+
+  const handymanService = await Handyman.findById(id); // Populate postedBy
+
+  if (!handymanService) {
+    return next(new ErrorHandler("This service is not available", 400));
+  }
+
+  if (handymanService.isbooked && handymanService.isbooked.toString() !== userId) {
+    return next(new ErrorHandler("Already Booked Service", 400));
+  }
+
+  handymanService.isbooked = userId;
+  await handymanService.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Successfully Booked",
+    handyman: handymanService, // Include booked handyman details (optional)
+  });
+});
 
 export const userservice = catchasyncerror(async(req,res,next) => {
     const User = req.user;

@@ -29,13 +29,14 @@ function Yourpetinfo() {
         try {
             await axios.delete(`http://localhost:3000/api/v1/delete/pet/post/${id}`  , {withCredentials:true})
             .then((res) => {
-                toast.success(res.data.message);
+                
                 setallpet((prevdata) => ({
                     ...prevdata,
                     getalluserpet: prevdata.getalluserpet.filter(
                         (getalluserpet) => id !== getalluserpet._id
                     ),
                 }));
+                toast.success(res.data.message);
                 
             })
             

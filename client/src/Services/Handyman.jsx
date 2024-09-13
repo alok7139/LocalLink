@@ -62,13 +62,13 @@ function Handyman() {
             <p className='font-bold text-lg'><span className='font-thin'>Phone Number : </span>{item.phone}</p>
           </div>
             
-            {
+            {/* {
             isauthenticated ? 
             <Link to={`#`}>
             <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Book</button>
           </Link> :
            <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Book</button>
-          }
+          } */}
              
           </div>
         ))}
