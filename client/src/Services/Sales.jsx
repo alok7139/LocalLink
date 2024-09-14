@@ -59,6 +59,7 @@ function Sales() {
             <p className=' text-lg'><span className='font-thin'></span> {item.address}</p>
             <p className=' text-lg'><span className='font-thin'>+91 </span> {item.phone}</p>
             <p className=' text-lg'><span className='font-thin'></span> {item.description}</p>
+            <p className=' text-lg'><span className='font-thin'></span> {new Date(item.date).toLocaleDateString()}</p>
           </div>
           
           {/* {
