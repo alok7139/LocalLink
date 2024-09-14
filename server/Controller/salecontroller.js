@@ -6,7 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 
 export const registersale = catchasyncerror(async(req,res,next) => {
     if(!req.files || Object.keys(req.files).length ===0 ){
-        return next(new ErrorHandler("Image of Object required",400));
+        return next(new ErrorHandler("Image is required",400));
     }
 
     const {salesvg} = req.files;
@@ -36,7 +36,7 @@ export const registersale = catchasyncerror(async(req,res,next) => {
     const postedby = req.user._id;
 
     const newsale = Sales.create({
-        name, address , phone , description  ,date,
+        name, address , phone , description  ,date, postedby,
         salesvg:{
             public_id: (await cloudinaryresponse).public_id,
             url: (await cloudinaryresponse).secure_url
