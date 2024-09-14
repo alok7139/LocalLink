@@ -20,9 +20,10 @@ function Updatesale() {
     useEffect(() => {
         const fetchdetails = async() => {
             try {
-                await axios.get(`http://localhost:3000/api/v1/fetch/sale/${id}` , {withCredentials:true})
-                .then((res) => {
-                    const detail = res.data.saleservice;
+                const response = await axios.get(`http://localhost:3000/api/v1/fetch/sale/${id}` , {withCredentials:true})
+                    console.log(response)
+                    const detail = response.data.saleservice;
+                    console.log(detail)
                     setname(detail.name)
                     setphone(detail.phone)
                     setsalecost(detail.salecost)
@@ -30,12 +31,12 @@ function Updatesale() {
                     setdescription(detail.description)
                     setsalesvgpreview(detail.salesvg.url)
                     setsalesvg(detail.salesvg.url)
-                })
             } catch (error) {
                 toast.error(error.response.data.message)
             }
         }
-    } , [ id])
+        fetchdetails();
+    } , [id])
 
 
     const handlesvg = (e) => {
@@ -61,7 +62,7 @@ function Updatesale() {
             await axios.put(`http://localhost:3000/api/v1/updated/sale/${id}` , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
             .then((res) => {
                 toast.success(res.data.message)
-                navigate('/sales')
+                // navigate('/sales')
             })
         } catch (error) {
             toast.error(error.response.data.message)

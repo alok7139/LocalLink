@@ -26,6 +26,7 @@ function Yoursaleservice() {
   } , [])
 
   const deletesellitem = async(id) => {
+    console.log(id);
        try {
          await axios.delete(`http://localhost:3000/api/v1/delete/sale/service/${id}` , {withCredentials:true})
          .then((res) => {
@@ -67,7 +68,7 @@ function Yoursaleservice() {
             <p className=' text-lg'><span className='font-thin'></span> {new Date(item.date).toLocaleDateString()}</p>
           </div>
           <div className='flex flex-col lg:flex-row gap-2 justify-between items-center mt-1'>
-  <Link to={`/update/sale/${item._id}}`} className='w-full lg:w-auto'>
+  <Link to={`/update/sale/${item._id}`} className='w-full lg:w-auto'>
     <button className='bg-blue-500 text-white py-2 px-4 rounded-lg w-full sm:w-auto'>Update</button>
   </Link>
  
