@@ -11,6 +11,9 @@ export const Footer = lazy(() => import('./components/Footer'));
 import LOader from './components/Loader';
 import { Context } from './main';
 import axios from 'axios';
+export const Yoursaleservice = lazy(() => import('./saleservice/Yourservice'))
+export const Registersale = lazy(() => import('./saleservice/Registersale'))
+export const Updatesale = lazy(() => import('./saleservice/Updatesale'))
 export const Updateservice = lazy(() => import('./handymanservice/Updateservice'))
 export const YourHandymanservice= lazy(() => import('./handymanservice/yourservice'))
 export const CreateHandyservice = lazy(()=> import('./handymanservice/createservice'))
@@ -93,6 +96,9 @@ function App() {
          <Route path='/create/handyman/service' element={<CreateHandyservice/>}/>
          <Route path='/Update/handyman/:id' element={<Updateservice/>}/>
          <Route path='/your/handyman/service' element={<YourHandymanservice/>}/>
+         <Route path='/your/sale/service' element={<Yoursaleservice/>} />
+         <Route path='/register/sale' element={<Registersale/>}/>
+         <Route path='/update/sale/:id' element={<Updatesale/>}/>
        </Routes>
        <Footer/>
        
