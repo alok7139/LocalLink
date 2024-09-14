@@ -34,7 +34,7 @@ function Updateservice() {
       }
     }
     fetchdetails();
-  })
+  },[id])
 
   const updateservice = async() => {
       const formdata = new FormData();
@@ -52,6 +52,10 @@ function Updateservice() {
       } catch (error) {
         toast.error(error.response.data.message);
       }
+  }
+
+  if(!isauthenticated){
+    return navigate('/login')
   }
 
   return (
