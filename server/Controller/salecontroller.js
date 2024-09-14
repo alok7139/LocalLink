@@ -50,3 +50,78 @@ export const registersale = catchasyncerror(async(req,res,next) => {
     })
 })
 
+export const allsales = catchasyncerror(async(req,res,next) => {
+    const allsale = await Sales.find({})
+    res.status(200).json({
+        success:true,
+        allsale
+    })
+})
+
+export const usersale = catchasyncerror(async(req,res,next) => {
+    const allusersale = await Sales.find({postedby:req.user._id});
+    res.status(201).json({
+        success:true,
+        allusersale
+    })
+})
+
+export const deletesale = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const deletesale = await Sales.findById(id);
+
+    if(!deletesale){
+        return next(new ErrorHandler("😅 Oops, This Service is not avaliable any more",400));
+    }
+
+    const cloudinaryid = deletesale.salesvg.public_id;
+    await cloudinary.uploader.destroy(cloudinaryid);
+    await deletesale.deleteOne();
+    res.status(200).json({
+        success:true,
+        message:"Successfully Deleted",
+    })
+})
+
+export const updatesaleservice = catchasyncerror(async(req,res,next) => {
+    const {id} = req.params;
+    const updatesale = {
+        name: req.body.name,
+        salecost: req.body.salecost,
+        phone: req.body.phone,
+        address:req.body.address,
+        description: req.body.description,
+
+    }
+
+    if(req.files && req.files.salesvg){
+        const salebanner = req.files.salesvg;
+        const sale = await Sales.findById(id);
+        
+        const bannerid =  sale.salesvg.public_id;
+        await cloudinary.uploader.destroy(bannerid);
+
+        const cloudinaryresponse =  cloudinary.uploader.upload(
+            salebanner.tempFilePath,
+            {folder:"Sale_folder"},
+        )
+
+        updatesale.salesvg = {
+            public_id : (await cloudinaryresponse).public_id,
+            url: (await cloudinaryresponse).secure_url
+        }
+    }
+
+    const updated = await Sales.findByIdAndUpdate(id , updatesale , {
+        new:true,
+        runValidators:true,
+        useFindAndModify: false,
+    })
+
+    res.status(200).json({
+        success:true,
+        message: "Updated Successfully",
+        updated
+    })
+
+})
