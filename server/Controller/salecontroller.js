@@ -27,16 +27,16 @@ export const registersale = catchasyncerror(async(req,res,next) => {
         return next(new ErrorHandler("Failed to upload Image!" , 500));
     };
 
-    const {name , phone, address , date , description } = req.body;
+    const {name , phone, address , salecost , description } = req.body;
 
-    if(!name  || !phone || !address || !date || !description){
+    if(!name  || !phone || !address || !salecost || !description){
         return next(new ErrorHandler("Please provide all details",400));
     }
 
     const postedby = req.user._id;
 
-    const newsale = Sales.create({
-        name, address , phone , description  ,date, postedby,
+    const newsale = await Sales.create({
+        name, address , phone , description  ,salecost, postedby,
         salesvg:{
             public_id: (await cloudinaryresponse).public_id,
             url: (await cloudinaryresponse).secure_url
@@ -48,7 +48,5 @@ export const registersale = catchasyncerror(async(req,res,next) => {
         message:"Successfully Posted",
         newsale
     })
-
-
-
 })
+

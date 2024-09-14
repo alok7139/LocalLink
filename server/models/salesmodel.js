@@ -29,7 +29,11 @@ const salesSchema = new mongoose.Schema({
     },
     date:{
         type:Date,
-        required:true,
+        default:Date.now(),
+    },
+    salecost:{
+       type:String,
+       required:true
     },
     postedby:{
         type:mongoose.Schema.ObjectId,
