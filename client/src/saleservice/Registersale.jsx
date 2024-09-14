@@ -22,10 +22,11 @@ function Registersale() {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(file)
-        reader.onload(() => {
+        reader.onload = () => {
             setsalesvg(file);
             setsalesvgpreview(reader.result);
-        })
+        }
+        console.log(file);
     }
 
     const validationForm = () => {
@@ -60,13 +61,15 @@ function Registersale() {
         try {
             await axios.post("http://localhost:3000/api/v1/post/sale/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
             .then((res) => {
+                console.log(res.data.message);
                 toast.success(res.data.message);
-                setname('')
-                setaddress('')
-                setsalecost('')
-                setdescription('')
-                setphone('')
-                setsalesvgpreview('');
+                navigate('/sales')
+                // setname('')
+                // setaddress('')
+                // setsalecost('')
+                // setdescription('')
+                // setphone('')
+                // setsalesvg('');
             })
         } catch (error) {
             toast.error(error.response.data.message);
@@ -94,7 +97,7 @@ function Registersale() {
             ? salesvgpreview
             : 'https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-photo-preview-frame-icon.png'
         }
-        alt={localeventname}
+        alt={name}
         className='w-full h-auto max-w-xl object-cover rounded-sm'
       />
       <input type='file' className={`mt-4 ${error.salesvg ? 'border-red-500' : 'border-gray-300'} w-full p-2 border rounded-lg`} onChange={handlesvg} />
@@ -149,12 +152,12 @@ function Registersale() {
       <div className='flex flex-col w-full'>
         <input
           type='text'
-          className={`w-full p-2 ${error.city ? 'border-red-500' : 'border-gray-300'} border rounded-lg`}
-          value={city}
-          placeholder='Enter the City'
-          onChange={(e) => setcity(e.target.value)}
+          className={`w-full p-2 ${error.description ? 'border-red-500' : 'border-gray-300'} border rounded-lg`}
+          value={description}
+          placeholder='Enter the Description'
+          onChange={(e) => setdescription(e.target.value)}
         />
-        {error.city && <p className='text-red-500 mt-2 text-sm'>{error.city}</p>}
+        {error.description && <p className='text-red-500 mt-2 text-sm'>{error.description}</p>}
       </div>
     </div>
   </div>
