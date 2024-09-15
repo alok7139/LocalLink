@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 
 function Updatesale() {
     const { isauthenticated } = useContext(Context);
-  const navigate = useNavigate();
-  const { id } = useParams();
+    const navigate = useNavigate();
+    const { id } = useParams();
   
     const [name, setname] = useState('')
     const [salecost, setsalecost] = useState('')
@@ -62,7 +62,7 @@ function Updatesale() {
             await axios.put(`http://localhost:3000/api/v1/updated/sale/${id}` , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
             .then((res) => {
                 toast.success(res.data.message)
-                // navigate('/sales')
+                navigate('/sales')
             })
         } catch (error) {
             toast.error(error.response.data.message)
