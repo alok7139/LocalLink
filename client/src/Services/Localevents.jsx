@@ -65,7 +65,7 @@ function Localevents() {
             {
             isauthenticated ? 
             <Link to={`/book/event/${item._id}`}>
-            <button className='bg-red-500 text-white py-2 px-4 rounded-lg mt-4 w-full'>Book event</button>
+            <button className='bg-black text-white py-2 px-4 rounded-lg mt-4 w-full'>Book event</button>
           </Link> :
            <button className='bg-gray-300 text-white py-2 hover:tex disabled:border-gray-300 px-4 rounded-lg mt-4 w-full cursor-not-allowed'>Book event</button>
           }

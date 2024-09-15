@@ -42,7 +42,7 @@ export const Register = lazy(() => import("./components/Register"))
 const customId = "custom-id-yes";
 
 function App() {
-  const {isauthenticated , setisauthenticated , setuser} = useContext(Context)
+  const {isauthenticated , setisauthenticated ,user, setuser} = useContext(Context)
 
   const notify = () => {
     toast("I cannot be duplicated!", {
@@ -62,7 +62,7 @@ function App() {
        }
     }
     fetchuser();
-  } , [isauthenticated])
+  } , [])
 
   return (
     <>
