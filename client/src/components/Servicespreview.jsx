@@ -35,7 +35,7 @@ const NeighborhoodFeatures = () => {
             Users can ask for recommendations or offer handyman services, such as home repairs, electrical work, or plumbing, within the neighborhood.
           </FeatureBox>
 
-          <FeatureBox title="Sales">
+          <FeatureBox title="Sell">
             Neighbors can list items they are selling or announce garage sales, making it easy to buy and sell within the community.
           </FeatureBox>
         </div>
