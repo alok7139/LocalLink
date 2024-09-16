@@ -8,7 +8,7 @@ import process from 'node:process';
 
 const numCPUs = availableParallelism();
 
-// console.log(numCPUs);
+console.log(numCPUs);
 
 
 

@@ -60,6 +60,7 @@ function CreateHandyservice() {
                 setfee('')
                 setphone('') 
                 settypeofservice('')
+                navigate('/create/handyman/service')
             })
         } catch (error) {
             toast.error(error.response.data.message);

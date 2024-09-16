@@ -79,9 +79,9 @@ function Createpetinfo() {
         try {
           await axios.post("http://localhost:3000/api/v1/post/lost/pet" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } })
           .then((res) => {
-              console.log(res)
+              // console.log(res)
               toast.success(res.data.message);
-            //   navigate('/lostpets');
+              navigate('/lostpets');
           })
         } catch (error) {
             toast.error(error.response.data.message);
