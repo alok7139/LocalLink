@@ -39,7 +39,7 @@ function Bookevent() {
         return;
     }
 
-    await axios.post(`http://localhost:3000/api/v1/book/event/${id}` , {name,email,phone , isbooked:true} , {withCredentials:true , headers:{"Content-Type" : "application/json"}})
+    await axios.post(`https://locallink.onrender.com/api/v1/book/event/${id}` , {name,email,phone , isbooked:true} , {withCredentials:true , headers:{"Content-Type" : "application/json"}})
     .then((res) => {
         toast.success(res.data.message)
         setname('')

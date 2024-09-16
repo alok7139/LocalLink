@@ -13,7 +13,7 @@ function Sales() {
   useEffect(() => {
     const fetchsale = async() => {
       try {
-         await axios.get("http://localhost:3000/api/v1/get/allsale/post" , {withCredentials:true})
+         await axios.get("https://locallink.onrender.com/api/v1/get/allsale/post" , {withCredentials:true})
          .then((res) => {
           setallsale(res.data);
          })

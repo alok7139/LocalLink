@@ -14,7 +14,7 @@ function Lostpets() {
   useEffect(() => {
      const fetchpet = async() => {
        try {
-         await axios.get("http://localhost:3000/api/v1/all/pet" , {withCredentials:true})
+         await axios.get("https://locallink.onrender.com/api/v1/all/pet" , {withCredentials:true})
          .then((res) => {
            setalllostpet(res.data);
          })

@@ -21,7 +21,7 @@ function Updateevent() {
   useEffect(() => {
     const fetchevent = async () => {
       try {
-        const  response = await axios.get(`http://localhost:3000/api/v1/fetch/${id}`, { withCredentials: true });
+        const  response = await axios.get(`https://locallink.onrender.com/api/v1/fetch/${id}`, { withCredentials: true });
         console.log(response);
         const eventData = response.data.events;
         // console.log(1);
@@ -66,7 +66,7 @@ function Updateevent() {
     formdata.append('localeventsvg', localeventsvg);
     try {
       const events = await axios.put(
-        `http://localhost:3000/api/v1/update/event/${id}`,
+        `https://locallink.onrender.com/api/v1/update/event/${id}`,
         formdata,
         { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } }
       );

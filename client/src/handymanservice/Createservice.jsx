@@ -52,7 +52,7 @@ function CreateHandyservice() {
         formdata.append("fee" , fee);
 
         try {
-            await axios.post("http://localhost:3000/api/v1/post/handyman/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } }  )
+            await axios.post("https://locallink.onrender.com/api/v1/post/handyman/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } }  )
             .then((res) => {
                 toast.success(res.data.message);
                 setname('')

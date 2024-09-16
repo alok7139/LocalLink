@@ -19,7 +19,7 @@ function Updatetutor() {
     useEffect(() => {
       const fetchtutor = async() => {
           try {
-            const response = await axios.get(`http://localhost:3000/api/v1/get/info/${id}` , {withCredentials:true})
+            const response = await axios.get(`https://locallink.onrender.com/api/v1/get/info/${id}` , {withCredentials:true})
             // console.log(response.data);
             const service = response.data.tutorservice;
             settutorname(service.tutorname);
@@ -44,7 +44,7 @@ function Updatetutor() {
       formdata.append("phone" , phone);
       formdata.append("typeoftutor" , typeoftutor)
       try {
-        await axios.put(`http://localhost:3000/api/v1/get/update/${id}` , formdata , {withCredentials:true , headers:{"Content-Type" : "application/json"}} )
+        await axios.put(`https://locallink.onrender.com/api/v1/get/update/${id}` , formdata , {withCredentials:true , headers:{"Content-Type" : "application/json"}} )
         .then((res) => {
           toast.success(res.data.message);
           navigate('/your/tutor/service')

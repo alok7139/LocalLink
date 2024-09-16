@@ -19,7 +19,7 @@ function Updateservice() {
   useEffect(() => {
     const fetchdetails = async() => {
       try {
-        await axios.get(`http://localhost:3000/api/v1/get/handyman/details/${id}` , {withCredentials:true})
+        await axios.get(`https://locallink.onrender.com/api/v1/get/handyman/details/${id}` , {withCredentials:true})
         .then((res) => {
           const fetchdetails = res.data.fetchhandyman;
           console.log(fetchdetails);
@@ -44,7 +44,7 @@ function Updateservice() {
       formdata.append("typeofservice" , typeofservice)
       formdata.append("address" , address);
       try {
-        await axios.put(`http://localhost:3000/api/v1/update/service/${id}` , formdata , {withCredentials:true , headers:{"Content-Type" : "application/json"}}  )
+        await axios.put(`https://locallink.onrender.com/api/v1/update/service/${id}` , formdata , {withCredentials:true , headers:{"Content-Type" : "application/json"}}  )
         .then((res) => {
           toast.success(res.data.message);
           navigate('/your/handyman/service')

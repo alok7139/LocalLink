@@ -14,7 +14,7 @@ function Yoursaleservice() {
   useEffect(() => {
         const fetchsale = async() => {
              try {
-                await axios.get("http://localhost:3000/api/v1/get/user/sale" , {withCredentials:true})
+                await axios.get("https://locallink.onrender.com/api/v1/get/user/sale" , {withCredentials:true})
                 .then((res) => {
                     setallusersale(res.data);
                 })
@@ -28,7 +28,7 @@ function Yoursaleservice() {
   const deletesellitem = async(id) => {
     console.log(id);
        try {
-         await axios.delete(`http://localhost:3000/api/v1/delete/sale/service/${id}` , {withCredentials:true})
+         await axios.delete(`https://locallink.onrender.com/api/v1/delete/sale/service/${id}` , {withCredentials:true})
          .then((res) => {
             setallusersale((prevdata) => ({
                 ...prevdata ,

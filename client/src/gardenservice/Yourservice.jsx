@@ -14,7 +14,7 @@ function Yourservice() {
     useEffect(() => {
         const fetchservice = async() => {
             try {
-                await axios.get("http://localhost:3000/api/v1/get/user/garden" , {withCredentials:true})
+                await axios.get("https://locallink.onrender.com/api/v1/get/user/garden" , {withCredentials:true})
                 .then((res) => {
                     setusergarden(res.data);
                 })
@@ -28,7 +28,7 @@ function Yourservice() {
 
     const deleteservice = async(id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/v1/delete/${id}` , {withCredentials:true})
+            await axios.delete(`https://locallink.onrender.com/api/v1/delete/${id}` , {withCredentials:true})
             .then((res) => {
                 console.log(res);
                 toast.success("Deleted Successfully");

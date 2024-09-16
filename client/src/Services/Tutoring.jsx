@@ -14,7 +14,7 @@ function Tutoring() {
   useEffect(() => {
       const fetchtutor = async() => {
         try {
-          await axios.get("http://localhost:3000/api/v1/get/all/tutor" , {withCredentials:true})
+          await axios.get("https://locallink.onrender.com/api/v1/get/all/tutor" , {withCredentials:true})
           .then((res) => {
             setalltutor(res.data);
           })

@@ -13,7 +13,7 @@ function Yourevents() {
 
   useEffect(() => {
     const fetchevent = async() => {
-        await axios.get("http://localhost:3000/api/v1/getall/events" , {withCredentials:true})
+        await axios.get("https://locallink.onrender.com/api/v1/getall/events" , {withCredentials:true})
         .then((res) => {
           setallevent(res.data);
         }).catch((error) => {
@@ -25,7 +25,7 @@ function Yourevents() {
 
   const deleteevent = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/api/v1/delete/event/${id}`, { withCredentials: true });
+      const res = await axios.delete(`https://locallink.onrender.com/api/v1/delete/event/${id}`, { withCredentials: true });
       toast.success("Deleted Successfully");
       setallevent((prevData) => ({
         ...prevData,

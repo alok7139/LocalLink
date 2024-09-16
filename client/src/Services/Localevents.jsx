@@ -13,7 +13,7 @@ function Localevents() {
   useEffect(() => {
     const fetchevent = async () => {
       try {
-        await axios.get("http://localhost:3000/api/v1/user/allevents", { withCredentials: true })
+        await axios.get("https://locallink.onrender.com/api/v1/user/allevents", { withCredentials: true })
           .then((res) => {
             setallevents(res.data);
           });

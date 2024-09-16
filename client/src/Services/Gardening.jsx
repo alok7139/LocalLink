@@ -15,7 +15,7 @@ function Gardening() {
   useEffect(() => {
      const fetchgarden = async() => {
          try {
-          await axios.get("http://localhost:3000/api/v1/get/all/garden" , {withCredentials:true})
+          await axios.get("https://locallink.onrender.com/api/v1/get/all/garden" , {withCredentials:true})
           .then((res) => {
             console.log(res.data)
             setgarden(res.data)

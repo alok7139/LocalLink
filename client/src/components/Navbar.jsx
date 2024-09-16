@@ -32,7 +32,7 @@ function Navbar() {
   
 
   const handlelogout = async() => {
-    await axios.get("http://localhost:3000/api/v1/user/logout" , {withCredentials:true})
+    await axios.get("https://locallink.onrender.com/api/v1/user/logout" , {withCredentials:true})
     .then((res) => {
       setisauthenticated(false)
       toast.success(res.data.message);

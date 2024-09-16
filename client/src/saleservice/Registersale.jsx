@@ -59,7 +59,7 @@ function Registersale() {
         formdata.append("salesvg" , salesvg)
 
         try {
-            await axios.post("http://localhost:3000/api/v1/post/sale/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
+            await axios.post("https://locallink.onrender.com/api/v1/post/sale/service" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
             .then((res) => {
                 console.log(res.data.message);
                 toast.success(res.data.message);

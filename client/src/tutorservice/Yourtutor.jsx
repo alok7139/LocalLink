@@ -14,7 +14,7 @@ function Yourtutor() {
   useEffect(() => {
       const fetchtutor = async() => {
            try {
-             await axios.get("http://localhost:3000/api/v1/get/alluser/tutor" , {withCredentials:true})
+             await axios.get("https://locallink.onrender.com/api/v1/get/alluser/tutor" , {withCredentials:true})
              .then((res) => {
               setallusertutor(res.data);
              })
@@ -27,7 +27,7 @@ function Yourtutor() {
 
   const deleteservice = async(id) => {
       try {
-         await axios.delete(`http://localhost:3000/api/v1/get/delete/${id}` , {withCredentials:true})
+         await axios.delete(`https://locallink.onrender.com/api/v1/get/delete/${id}` , {withCredentials:true})
          .then((res) => {
             
             setallusertutor((prevdata) => ({

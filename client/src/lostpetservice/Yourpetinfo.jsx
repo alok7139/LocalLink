@@ -13,7 +13,7 @@ function Yourpetinfo() {
     useEffect(() => {
        const fetchpet = async() => {
            try {
-            await axios.get("http://localhost:3000/api/v1/all/user/pet" , {withCredentials:true})
+            await axios.get("https://locallink.onrender.com/api/v1/all/user/pet" , {withCredentials:true})
             .then((res) => {
                 setallpet(res.data);
             })
@@ -27,7 +27,7 @@ function Yourpetinfo() {
 
     const deletepet = async(id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/v1/delete/pet/post/${id}`  , {withCredentials:true})
+            await axios.delete(`https://locallink.onrender.com/api/v1/delete/pet/post/${id}`  , {withCredentials:true})
             .then((res) => {
                 
                 setallpet((prevdata) => ({

@@ -53,7 +53,7 @@ function App() {
   useEffect(() => {
     const fetchuser = async() => {
        try {
-         const response = await axios.get("http://localhost:3000/api/v1/user/getuser" , {withCredentials:true})
+         const response = await axios.get("https://locallink.onrender.com/api/v1/user/getuser" , {withCredentials:true})
          setisauthenticated(true);
          setuser(response.data.user);
        } catch (error) {

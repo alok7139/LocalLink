@@ -14,7 +14,7 @@ function YourHandymanservice() {
     useEffect(() => {
       const fetchservice = async() => {
             try {
-              await axios.get("http://localhost:3000/api/v1/get/alluser/service" , {withCredentials:true})
+              await axios.get("https://locallink.onrender.com/api/v1/get/alluser/service" , {withCredentials:true})
               .then((res) => {
                   sethandymanservice(res.data);
               })
@@ -27,7 +27,7 @@ function YourHandymanservice() {
 
     const deleteservice = async(id) => {
          try {
-           await axios.delete(`http://localhost:3000/api/v1/delete/handyman/${id}` , {withCredentials:true})
+           await axios.delete(`https://locallink.onrender.com/api/v1/delete/handyman/${id}` , {withCredentials:true})
            .then((res) => {
             sethandymanservice((prevdata) => ({
               ...prevdata ,

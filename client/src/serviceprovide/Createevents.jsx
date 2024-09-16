@@ -80,7 +80,7 @@ function Createevents() {
     formdata.append('city', city);
     formdata.append('localeventsvg', localeventsvg);
     try {
-      await axios.post("http://localhost:3000/api/v1/register/events" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
+      await axios.post("https://locallink.onrender.com/api/v1/register/events" , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
       .then((res) => {
         toast.success(res.data.message);
         navigate('/localevents');

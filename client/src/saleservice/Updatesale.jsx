@@ -20,7 +20,7 @@ function Updatesale() {
     useEffect(() => {
         const fetchdetails = async() => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/fetch/sale/${id}` , {withCredentials:true})
+                const response = await axios.get(`https://locallink.onrender.com/api/v1/fetch/sale/${id}` , {withCredentials:true})
                     console.log(response)
                     const detail = response.data.saleservice;
                     console.log(detail)
@@ -59,7 +59,7 @@ function Updatesale() {
         formdata.append("salesvg" , salesvg)
 
         try {
-            await axios.put(`http://localhost:3000/api/v1/updated/sale/${id}` , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
+            await axios.put(`https://locallink.onrender.com/api/v1/updated/sale/${id}` , formdata , { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } } )
             .then((res) => {
                 toast.success(res.data.message)
                 navigate('/sales')

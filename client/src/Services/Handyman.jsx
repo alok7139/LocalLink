@@ -15,7 +15,7 @@ function Handyman() {
   useEffect(() => {
       const fetchservice= async() => {
          try {
-            await axios.get("http://localhost:3000/api/v1/get/all/service", {withCredentials:true})
+            await axios.get("https://locallink.onrender.com/api/v1/get/all/service", {withCredentials:true})
             .then((res) => {
               sethandymanservice(res.data);
             })
