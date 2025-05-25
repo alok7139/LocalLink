@@ -44,3 +44,11 @@ npm install
 MONGO_URI=your_mongodb_connection_string
 PORT=3000
 JWT_SECRET=your_jwt_secret
+
+# start backend
+cd server
+npm run dev
+
+# start client
+cd client
+npm run dev
